@@ -14,3 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/about', function () {
+    return view('about');
+});
+
+Route::controller('/peaks','PeakController');
+
+Route::controller('/users','UserController');
+
+Route::controller('/hike','HikeController');
