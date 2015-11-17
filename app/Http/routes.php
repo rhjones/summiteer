@@ -24,3 +24,7 @@ Route::controller('/peaks','PeakController');
 Route::controller('/users','UserController');
 
 Route::controller('/hike','HikeController');
+
+if(App::environment('local')) {
+	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+};
