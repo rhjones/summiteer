@@ -14,13 +14,8 @@ class UserController extends Controller {
      * Responds to requests to GET /user/{username}
      */
     public function getIndex($username = null) {
-        return 'Display user profile';
+        return 'Display user profile for '.$username;
     }
-
-    
-    // public function getShow($title = null) {
-    //     return view('books.show')->with('title', $title);
-    // }
 
     /**
      * Responds to requests to GET /user/create

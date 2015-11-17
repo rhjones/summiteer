@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Peak Logger</title>
+        <title>Peak Logger: About</title>
 
         <link href="https://fonts.googleapis.com/css?family=Lato:100" rel="stylesheet" type="text/css">
 
@@ -38,7 +38,7 @@
     <body>
         <div class="container">
             <div class="content">
-                <div class="title">Peak Logger</div>
+                <div class="title">Peak Logger: About</div>
             </div>
         </div>
     </body>
