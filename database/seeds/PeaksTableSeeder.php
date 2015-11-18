@@ -17,18 +17,18 @@ class PeaksTableSeeder extends Seeder
     	$lexer = new Lexer(new LexerConfig());
 		$interpreter = new Interpreter();
 		$interpreter->addObserver(function(array $row) {
-		    DB::table('peaks')->insert([
-	        	'created_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        	'updated_at' => Carbon\Carbon::now()->toDateTimeString(),
-	        	'name' => $row[0],
-	        	'elevation' => $row[1],
-	        	'prominence' => $row[2],
-	        	'location' => $row[3],
-	        	'state' => $row[4],
-	        	'range' => $row[5],
-	        	'forecast_link' => $row[6],
-	        	'description_link' => $row[7],
-	        ]);
+		    $peak = new \App\Peak();
+			$peak->created_at = Carbon\Carbon::now()->toDateTimeString();
+			$peak->updated_at = Carbon\Carbon::now()->toDateTimeString();
+	      	$peak->name = $row[0];
+	        $peak->elevation = $row[1];
+	        $peak->prominence = $row[2];
+	        $peak->location = $row[3];
+	        $peak->state = $row[4];
+	        $peak->range = $row[5];
+	        $peak->forecast_link = $row[6];
+	        $peak->description_link = $row[7];
+	        $peak->save();
 		});
 		$peakscsv = database_path() . '/seeds/peaks.csv';
 		$lexer->parse($peakscsv, $interpreter);
