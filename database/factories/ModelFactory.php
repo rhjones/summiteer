@@ -19,3 +19,13 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'remember_token' => str_random(10),
     ];
 });
+
+$factory->define(App\Hike::class, function (Faker\Generator $faker) {
+    return [
+        'date_hiked' => $faker->date($format = 'Y-m-d', $max = 'now'),
+        'mileage' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1.0, $max = 150.00),
+        'rating' => $faker->numberBetween($min = 1, $max = 5),
+        'notes' => $faker->text($maxNbChars = 200),
+        'public' => $faker->boolean($chanceOfGettingTrue = 50),
+    ];
+});
