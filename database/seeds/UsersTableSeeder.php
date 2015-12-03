@@ -28,5 +28,21 @@ class UsersTableSeeder extends Seeder
 	    $user->password = \Hash::make('helloworld');
 	    $user->save();
 
+	    $user = \App\User::firstOrCreate(['email' => 'rebekah.heacock+test1@gmail.com']);
+	    $user->username = 'rebekah1';
+	    $user->firstname = 'RebekahOne';
+	    $user->lastname = 'HJOne';
+	    $user->email = 'rebekah.heacock+test1@gmail.com';
+	    $user->password = \Hash::make('helloworld');
+	    $user->save();
+
+	    $user = \App\User::firstOrCreate(['email' => 'rebekah.heacock+test2@gmail.com']);
+	    $user->username = 'rebekah2';
+	    $user->firstname = 'RebekahTwo';
+	    $user->lastname = 'HJTwo';
+	    $user->email = 'rebekah.heacock+test2@gmail.com';
+	    $user->password = \Hash::make('helloworld');
+	    $user->save();
+
 	}
 }

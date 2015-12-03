@@ -27,5 +27,6 @@ $factory->define(App\Hike::class, function (Faker\Generator $faker) {
         'rating' => $faker->numberBetween($min = 1, $max = 5),
         'notes' => $faker->text($maxNbChars = 200),
         'public' => $faker->boolean($chanceOfGettingTrue = 50),
+        'user_id' => $faker->numberBetween($min = 1, $max = 4),
     ];
 });
