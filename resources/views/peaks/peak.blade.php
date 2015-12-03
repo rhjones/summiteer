@@ -4,6 +4,11 @@
 
 @section('content')
 
-    Show a single peak: {{ $name }}
+    @if(!isset($name))
+        You have not specified a peak
+    @else
+        <p>Show peak: {{ $name }}</p>
+    @endif
+
     
 @stop
