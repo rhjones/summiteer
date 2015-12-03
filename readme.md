@@ -6,8 +6,9 @@ Summitteer is a hiking log for those attempting to join the AMC 4000 Footer Club
 
 ## Outside Resources
 
-- Packages
+- Packages & Plugins
 	- [goodby/csv](https://github.com/goodby/csv)
+	- [christianbach/tablesorter](https://github.com/christianbach/tablesorter)
 
 
 
