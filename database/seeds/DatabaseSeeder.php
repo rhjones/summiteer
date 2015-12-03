@@ -17,6 +17,7 @@ class DatabaseSeeder extends Seeder
         // $this->call(UserTableSeeder::class);
         $this->call(PeaksTableSeeder::class);
         $this->call(HikesTableSeeder::class);
+        $this->call(HikePeakTableSeeder::class);
 
         Model::reguard();
     }
