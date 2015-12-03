@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <p>Already have an account? <a href='/login'>Login here...</a></p>
+    <p>Already have an account? <a href='login'>Login here...</a></p>
 
     <h1>Register</h1>
 
@@ -14,12 +14,22 @@
         </ul>
     @endif
 
-    <form method='POST' action='/register'>
+    <form method='POST' action='register'>
         {!! csrf_field() !!}
 
         <div class='form-group'>
-            <label for='name'>Name</label>
-            <input type='text' name='name' id='name' value='{{ old('name') }}'>
+            <label for='username'>User Name</label>
+            <input type='text' name='username' id='username' value='{{ old('username') }}'>
+        </div>
+
+        <div class='form-group'>
+            <label for='firstname'>First Name</label>
+            <input type='text' name='firstname' id='firstname' value='{{ old('firstname') }}'>
+        </div>
+
+        <div class='form-group'>
+            <label for='lastname'>Last Name</label>
+            <input type='text' name='lastname' id='lastname' value='{{ old('lastname') }}'>
         </div>
 
         <div class='form-group'>

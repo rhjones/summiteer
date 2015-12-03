@@ -14,6 +14,10 @@
 </head>
 <body>
 
+    @if(Session::get('flash_message') != null)
+        <div class='flash_message'>{{ Session::get('flash_message') }}</div>
+    @endif
+
     <header>
         <h1>@yield('title','PeakLogger')</h1>
     </header>

@@ -2,7 +2,7 @@
 
 @section('content')
 
-    <p>Don't have an account? <a href='/register'>Register here...</a></p>
+    <p>Don't have an account? <a href='register'>Register here...</a></p>
 
     <h1>Login</h1>
 
@@ -14,7 +14,7 @@
         </ul>
     @endif
 
-    <form method='POST' action='/login'>
+    <form method='POST' action='login'>
 
         {!! csrf_field() !!}
 
