@@ -2,7 +2,7 @@
 <html>
 <head>
     <title>
-        @yield('title','PeakLogger')
+        @yield('title') - PeakLogger
     </title>
 
     <meta charset='utf-8'>

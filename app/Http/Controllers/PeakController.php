@@ -14,15 +14,14 @@ class PeakController extends Controller {
     * Responds to requests to GET /peaks
     */
     public function getIndex() {
-        return 'List all the peaks';
+        return view('peaks.index');
     }
 
     /**
      * Responds to requests to GET /peaks/{name}
      */
-    public function getShow($name = null) {
-        return 'Individual peak page';
-        // return view('peaks.show')->with('name', $name);
+    public function showPeak($name) {
+        return view('peaks.peak')->with('name', $name);
     }
 
 }

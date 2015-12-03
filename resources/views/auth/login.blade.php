@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
+@section('title', 'Log In')
+
 @section('content')
 
     <p>Don't have an account? <a href='register'>Register here...</a></p>
-
-    <h1>Login</h1>
 
     @if(count($errors) > 0)
         <ul class='errors'>

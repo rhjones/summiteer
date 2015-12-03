@@ -19,26 +19,31 @@ Route::get('/about', function () {
     return view('about');
 });
 
-# Show login form
+// Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
 
-# Process login form
+// Process login form
 Route::post('/login', 'Auth\AuthController@postLogin');
 
-# Process logout
+// Process logout
 Route::get('/logout', 'Auth\AuthController@getLogout');
 
-# Show registration form
+// Show registration form
 Route::get('/register', 'Auth\AuthController@getRegister');
 
-# Process registration form
+// Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-Route::controller('/peaks','PeakController');
+// routes for displaying peaks
+Route::get('peaks', 'PeakController@getIndex');
+Route::get('peaks/{name}', 'PeakController@showPeak');
 
 Route::controller('/users','UserController');
-
 Route::controller('/hike','HikeController');
+
+// Route::resource('/hike','HikeController',
+//     ['only' => ['show']]
+// );
 
 if(App::environment('local')) {
 	

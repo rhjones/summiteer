@@ -13,20 +13,23 @@ class HikeController extends Controller {
     /**
     * Responds to requests to GET /hike/{id}
     */
-    public function getIndex($id = null) {
-        return 'Display hike';
-    }
-
-    // public function getShow($title = null) {
-    //     return view('books.show')->with('title', $title);
+    // public function getIndex($id = null) {
+    //     return 'Display hike';
     // }
+
+    /**
+    * Responds to requests to GET /hike/show/{id}
+    */
+    public function getShow($id) {
+        return view('hike.show')->with('id', $id);
+    }
 
 
     /**
      * Responds to requests to GET /hike/log
      */
     public function getLog() {
-        return 'Form to log a new hike';
+        return view('hike.log');
     }
 
     /**
@@ -39,8 +42,8 @@ class HikeController extends Controller {
     /**
      * Responds to requests to GET /hike/edit/{id}
      */
-    public function getEdit() {
-        return 'Form to edit hike';
+    public function getEdit($id) {
+        return view('hike.edit')->with('id', $id);
     }
 
     /**
@@ -51,9 +54,16 @@ class HikeController extends Controller {
     }
 
     /**
-     * Responds to requests to POST /hike/delete/{id}
+     * 
      */
-    public function postDelete() {
+    public function getConfirmDelete($id) {
+        return view('hike.delete')->with('id', $id);
+    }
+
+    /**
+     * 
+     */
+    public function getDoDelete() {
         return 'Delete hike';
     }
 
