@@ -18,18 +18,18 @@
         {!! csrf_field() !!}
 
         <div class='form-group'>
-            <label for='username'>User Name</label>
-            <input type='text' name='username' id='username' value='{{ old('username') }}'>
+            <label for='user_name'>User Name</label>
+            <input type='text' name='user_name' id='user_name' value='{{ old('user_name') }}'>
         </div>
 
         <div class='form-group'>
-            <label for='firstname'>First Name</label>
-            <input type='text' name='firstname' id='firstname' value='{{ old('firstname') }}'>
+            <label for='first_name'>First Name</label>
+            <input type='text' name='first_name' id='first_name' value='{{ old('first_name') }}'>
         </div>
 
         <div class='form-group'>
-            <label for='lastname'>Last Name</label>
-            <input type='text' name='lastname' id='lastname' value='{{ old('lastname') }}'>
+            <label for='last_name'>Last Name</label>
+            <input type='text' name='last_name' id='last_name' value='{{ old('last_name') }}'>
         </div>
 
         <div class='form-group'>
