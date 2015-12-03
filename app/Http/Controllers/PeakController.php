@@ -14,7 +14,8 @@ class PeakController extends Controller {
     * Responds to requests to GET /peaks
     */
     public function getIndex() {
-        return view('peaks.index');
+        $peaks = \App\Peak::orderBy('elevation','DESC')->get();
+        return view('peaks.index')->with('peaks',$peaks);
     }
 
     /**
