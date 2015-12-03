@@ -23,8 +23,8 @@ class PeaksTableSeeder extends Seeder
 	      	$peak->name = $row[0];
 	        $peak->elevation = $row[1];
 	        $peak->prominence = $row[2];
-	        $peak->location = $row[3];
-	        $peak->state = $row[4];
+	        $peak->state = $row[3];
+	        $peak->location = $row[4];
 	        $peak->range = $row[5];
 	        $peak->forecast_link = $row[6];
 	        $peak->description_link = $row[7];
