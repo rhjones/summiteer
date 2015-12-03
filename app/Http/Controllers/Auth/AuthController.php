@@ -69,8 +69,8 @@ class AuthController extends Controller
     {
         return User::create([
             'username' => $data['username'],
-            'firstname' => $data['firstname'],
-            'lastname' => $data['lastname'],
+            'first_name' => $data['first_name'],
+            'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
         ]);
@@ -78,6 +78,7 @@ class AuthController extends Controller
 
     /**
      * Log the user out of the application.
+     * Overwrites what's in AuthenticatesUsers.php
      *
      * @return \Illuminate\Http\Response
      */
