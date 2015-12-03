@@ -13,7 +13,7 @@ class UsersTableSeeder extends Seeder
 	{
 
 	    $user = \App\User::firstOrCreate(['email' => 'jill@harvard.edu']);
-	    $user->user_name = 'jillharvard';
+	    $user->username = 'jillharvard';
 	    $user->first_name = 'Jill';
 	    $user->last_name = 'Harvard';
 	    $user->email = 'jill@harvard.edu';
@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
 	    $user->save();
 
 	    $user = \App\User::firstOrCreate(['email' => 'jamal@harvard.edu']);
-	    $user->user_name = 'jamalharvard';
+	    $user->username = 'jamalharvard';
 	    $user->first_name = 'Jamal';
 	    $user->last_name = 'Harvard';
 	    $user->email = 'jamal@harvard.edu';
@@ -29,7 +29,7 @@ class UsersTableSeeder extends Seeder
 	    $user->save();
 
 	    $user = \App\User::firstOrCreate(['email' => 'rebekah.heacock+test1@gmail.com']);
-	    $user->user_name = 'rebekah1';
+	    $user->username = 'rebekah1';
 	    $user->first_name = 'RebekahOne';
 	    $user->last_name = 'HJOne';
 	    $user->email = 'rebekah.heacock+test1@gmail.com';
@@ -37,7 +37,7 @@ class UsersTableSeeder extends Seeder
 	    $user->save();
 
 	    $user = \App\User::firstOrCreate(['email' => 'rebekah.heacock+test2@gmail.com']);
-	    $user->user_name = 'rebekah2';
+	    $user->username = 'rebekah2';
 	    $user->first_name = 'RebekahTwo';
 	    $user->last_name = 'HJTwo';
 	    $user->email = 'rebekah.heacock+test2@gmail.com';

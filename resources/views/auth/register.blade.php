@@ -18,8 +18,8 @@
         {!! csrf_field() !!}
 
         <div class='form-group'>
-            <label for='user_name'>User Name</label>
-            <input type='text' name='user_name' id='user_name' value='{{ old('user_name') }}'>
+            <label for='username'>User Name*</label>
+            <input type='text' name='username' id='username' value='{{ old('username') }}'>
         </div>
 
         <div class='form-group'>
@@ -33,17 +33,17 @@
         </div>
 
         <div class='form-group'>
-            <label for='email'>Email</label>
+            <label for='email'>Email*</label>
             <input type='text' name='email' id='email' value='{{ old('email') }}'>
         </div>
 
         <div class='form-group'>
-            <label for='password'>Password</label>
+            <label for='password'>Password*</label>
             <input type='password' name='password' id='password'>
         </div>
 
         <div class='form-group'>
-            <label for='password_confirmation'>Confirm Password</label>
+            <label for='password_confirmation'>Confirm Password*</label>
             <input type='password' name='password_confirmation' id='password_confirmation'>
         </div>
 
