@@ -29,7 +29,9 @@ class HikeController extends Controller {
      * Responds to requests to GET /hike/log
      */
     public function getLog() {
-        return view('hike.log');
+        $peakModel = new \App\Peak();
+        $peak_list = $peakModel->getPeakList();
+        return view('hike.log')->with('peak_list',$peak_list);
     }
 
     /**
