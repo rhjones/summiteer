@@ -14,7 +14,7 @@
         </ul>
     @endif
 
-    <form method='POST' action='register'>
+    <form method='POST' action='/register'>
         {!! csrf_field() !!}
 
         <div class='form-group'>

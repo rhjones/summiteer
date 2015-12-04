@@ -35,11 +35,27 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 Route::post('/register', 'Auth\AuthController@postRegister');
 
 // routes for displaying peaks
-Route::get('peaks', 'PeakController@getIndex');
-Route::get('peaks/{name}', 'PeakController@showPeak');
+Route::get('/peaks', 'PeakController@getIndex');
 
-Route::controller('/users','UserController');
-Route::controller('/hike','HikeController');
+Route::get('/peaks/{name}', 'PeakController@showPeak');
+
+// Route::controller('/users','UserController');
+
+// Route::controller('/hike','HikeController');
+
+Route::get('/hike/show/{id}', 'HikeController@getShow');
+
+
+Route::group(['middleware' => 'auth'], function() {
+
+    Route::get('/hike/log', 'HikeController@getLog');
+    Route::post('/hike/log', 'HikeController@postLog');
+    Route::get('/hike/edit', 'HikeController@getEdit');
+    Route::post('/hike/edit', 'HikeController@postEdit');
+    Route::get('/hike/confirm-delete/{id}', 'HikeController@getConfirmDelete');
+  //  Route::get('/hike/delete/{id}', 'HikeController@getDoDelete');    
+
+});
 
 // Route::resource('/hike','HikeController',
 //     ['only' => ['show']]
@@ -47,7 +63,7 @@ Route::controller('/hike','HikeController');
 
 if(App::environment('local')) {
 	
-	Route::get('logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+	Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 };
 
 Route::get('/debug', function() {

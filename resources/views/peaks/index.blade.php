@@ -21,7 +21,7 @@
 			<tbody>
 	        @foreach($peaks as $peak)
 	            <tr>
-	                <td>{{ $peak->name }} <a href="{{ $peak->description_link }}">description (icon TK)</a> <a href="{{ $peak->forecast }}">forecast (icon TK)</a></td>
+	                <td>{{ $peak->name }} <a href="{{ $peak->description_link }}">description (icon TK)</a> <a href="{{ $peak->forecast }}" title="Get forecast">forecast (icon TK)</a></td>
 	                <td>{{ $peak->elevation }}</td>
 	                <td>{{ $peak->prominence }}</td>
 	                <td>{{ $peak->location }}, {{ $peak->state }}</td>

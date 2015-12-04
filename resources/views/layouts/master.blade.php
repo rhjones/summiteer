@@ -18,6 +18,20 @@
         <div class='flash_message'>{{ Session::get('flash_message') }}</div>
     @endif
 
+    <nav>
+    <ul>
+        @if(Auth::check())
+            <li><a href='/'>Home</a></li>
+            <li><a href='/hike/log'>Log a hike</a></li>
+            <li><a href='/logout'>Log out</a></li>
+        @else
+            <li><a href='/'>Home</a></li>
+            <li><a href='/login'>Log in</a></li>
+            <li><a href='/register'>Register</a></li>
+        @endif
+    </ul>
+</nav>
+
     <header>
         <h1>@yield('title','PeakLogger')</h1>
     </header>
