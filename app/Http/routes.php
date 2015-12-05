@@ -61,9 +61,15 @@ Route::group(['middleware' => 'auth'], function() {
 
 });
 
+
+/*----------------------------------------------------
+/ dev
+-----------------------------------------------------*/
+Route::controller('/practice','PracticeController');
+
 if(App::environment('local')) {
-	
-	Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
+    
+    Route::get('/logs', '\Rap2hpoutre\LaravelLogViewer\LogViewerController@index');
 };
 
 Route::get('/debug', function() {
@@ -100,9 +106,3 @@ Route::get('/debug', function() {
     echo '</pre>';
 
 });
-
-
-/*----------------------------------------------------
-/practice
------------------------------------------------------*/
-Route::controller('/practice','PracticeController');
