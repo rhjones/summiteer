@@ -91,6 +91,16 @@ return [
         'attribute-name' => [
             'rule-name' => 'custom-message',
         ],
+        'peaks' => [
+            'required' => 'Please specify at least one peak.',
+        ],
+        'date_hiked' => [
+            'required' => 'Please enter a date for this hike. Approximate dates are okay; future dates are not.',
+            'before' => 'No time traveling allowed! Please enter a date no later than today.',
+        ],
+        'mileage' => [
+            'numeric' => 'Mileage must be a numeric value.',
+        ],
     ],
 
     /*
