@@ -24,4 +24,5 @@ class Peak extends Model
 	    return $peak_list;
 
 	}
+
 }

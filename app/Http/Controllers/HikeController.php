@@ -13,16 +13,17 @@ class HikeController extends Controller {
 
     /**
     * Responds to requests to GET /hikes
+    * Displays an reverse-chronologically ordered list of a logged in user's hikes
     */
     public function getIndex() {
         $hikes = \App\Hike::where('user_id','=',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
-
+        
         foreach ($hikes as $hike) {
             $today = date_create();
             $date_of_hike = date_create_from_format('Y-m-d', $hike->date_hiked);
             $diff = date_diff($date_of_hike, $today);
             if ($diff->d <  1) {
-                $hike->date_hiked = $diff->format('%h hours');
+                $hike->date_hiked = $diff->format('less than a day');
             }
             else if ($diff->d === 1) {
                 $hike->date_hiked = '1 day';
@@ -42,8 +43,9 @@ class HikeController extends Controller {
             else {
                 $hike->date_hiked = $diff->format ('%y years');
             }
-            
         }
+
+
         return view('hikes.index')->with('hikes', $hikes);
     }
 

@@ -1,38 +1,27 @@
 <?php
 
-namespace App;
+namespace App\Http\Controllers;
 
-use Illuminate\Database\Eloquent\Model;
+use App\Http\Controllers\Controller;
 
-class Hike extends Model
-{
-    public function peaks()
-    {
-    	# With timestamps() will ensure the pivot table has its created_at/updated_at fields automatically maintained
-    	return $this->belongsToMany('\App\Peak')->withTimestamps();
+class HomeController extends Controller {
+
+    public function __construct() {
+        # Put anything here that should happen before any of the other actions
     }
 
-    public function user() {
-        # Hike belongs to User
-        # Define an inverse one-to-many relationship.
-        return $this->belongsTo('\App\User');
-    }
-
-    /*
-    * This is supposed to convert date stamps on hikes to relative time ('x days ago'), 
-    * but I can't get it to implement the way I want. 
-    * May end up deleting.
+    /**
+    * Responds to requests to GET /peaks
     */
+    public function getIndex() {
+        $public_hikes = \App\Hike::where('public', 1)->with('peaks')->orderBy('date_hiked','DESC')->take(10)->get();
 
-    public function relativeTime() {
-        $hikes = $this->get();
-
-        foreach ($hikes as $hike) {
+        foreach ($public_hikes as $hike) {
             $today = date_create();
             $date_of_hike = date_create_from_format('Y-m-d', $hike->date_hiked);
             $diff = date_diff($date_of_hike, $today);
             if ($diff->d <  1) {
-                $hike->date_hiked = $diff->format('%h hours');
+                $hike->date_hiked = $diff->format('less than a day');
             }
             else if ($diff->d === 1) {
                 $hike->date_hiked = '1 day';
@@ -53,6 +42,9 @@ class Hike extends Model
                 $hike->date_hiked = $diff->format ('%y years');
             }
         }
-        return $hikes;
+
+        return view('welcome')->with(['public_hikes' => $public_hikes]);
     }
+
+
 }

@@ -11,13 +11,8 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
-Route::get('/about', function () {
-    return view('about');
-});
+// Home view
+Route::get('/', 'HomeController@getIndex');
 
 // Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
@@ -39,12 +34,7 @@ Route::get('/peaks', 'PeakController@getIndex');
 
 Route::get('/peaks/{id}', 'PeakController@showPeak');
 
-// Route::controller('/users','UserController');
-
-// Route::controller('/hike','HikeController');
-
 Route::get('/hikes/show/{id}', 'HikeController@getShow');
-
 
 Route::group(['middleware' => 'auth'], function() {
     Route::get('hikes', 'HikeController@getIndex');
@@ -56,10 +46,6 @@ Route::group(['middleware' => 'auth'], function() {
   //  Route::get('/hike/delete/{id}', 'HikeController@getDoDelete');    
 
 });
-
-// Route::resource('/hike','HikeController',
-//     ['only' => ['show']]
-// );
 
 if(App::environment('local')) {
 	
