@@ -1,5 +1,5 @@
 $(document).ready(function() 
     { 
-        $("#peakstable").tablesorter(); 
+        $("#sortabletable").tablesorter(); 
     } 
 ); 

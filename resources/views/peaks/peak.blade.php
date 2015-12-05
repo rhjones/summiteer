@@ -4,10 +4,10 @@
 
 @section('content')
 
-    @if(!isset($name))
+    @if(!isset($id))
         You have not specified a peak
     @else
-        <p>Show peak: {{ $name }}</p>
+        <p>Show peak: {{ $id }}</p>
     @endif
 
     

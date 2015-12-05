@@ -37,22 +37,22 @@ Route::post('/register', 'Auth\AuthController@postRegister');
 // routes for displaying peaks
 Route::get('/peaks', 'PeakController@getIndex');
 
-Route::get('/peaks/{name}', 'PeakController@showPeak');
+Route::get('/peaks/{id}', 'PeakController@showPeak');
 
 // Route::controller('/users','UserController');
 
 // Route::controller('/hike','HikeController');
 
-Route::get('/hike/show/{id}', 'HikeController@getShow');
+Route::get('/hikes/show/{id}', 'HikeController@getShow');
 
 
 Route::group(['middleware' => 'auth'], function() {
-
-    Route::get('/hike/log', 'HikeController@getLog');
-    Route::post('/hike/log', 'HikeController@postLog');
-    Route::get('/hike/edit', 'HikeController@getEdit');
-    Route::post('/hike/edit', 'HikeController@postEdit');
-    Route::get('/hike/confirm-delete/{id}', 'HikeController@getConfirmDelete');
+    Route::get('hikes', 'HikeController@getIndex');
+    Route::get('/hikes/log', 'HikeController@getLog');
+    Route::post('/hikes/log', 'HikeController@postLog');
+    Route::get('/hikes/edit', 'HikeController@getEdit');
+    Route::post('/hikes/edit', 'HikeController@postEdit');
+    Route::get('/hikes/confirm-delete/{id}', 'HikeController@getConfirmDelete');
   //  Route::get('/hike/delete/{id}', 'HikeController@getDoDelete');    
 
 });

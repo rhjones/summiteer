@@ -19,10 +19,10 @@ class PeakController extends Controller {
     }
 
     /**
-     * Responds to requests to GET /peaks/{name}
+     * Responds to requests to GET /peaks/{id}
      */
-    public function showPeak($name) {
-        return view('peaks.peak')->with('name', $name);
+    public function showPeak($id) {
+        return view('peaks.peak')->with('id', $id);
     }
 
 }

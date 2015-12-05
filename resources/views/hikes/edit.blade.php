@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Log a hike')
+@section('title', 'Edit a hike')
 
 @section('content')
 
-    <form method="POST" action="/hike/log">
+    <form method="POST" action="/hike/edit">
 
     	{!! csrf_field() !!}
 	

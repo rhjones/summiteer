@@ -22,7 +22,7 @@
     <ul>
         @if(Auth::check())
             <li><a href='/'>Home</a></li>
-            <li><a href='/hike/log'>Log a hike</a></li>
+            <li><a href='/hikes/log'>Log a hike</a></li>
             <li><a href='/logout'>Log out</a></li>
         @else
             <li><a href='/'>Home</a></li>

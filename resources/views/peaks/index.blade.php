@@ -7,7 +7,7 @@
     @if(sizeof($peaks) == 0)
         There are no peaks.
     @else
-    	<table id="peakstable">
+    	<table id="sortabletable">
 			<thead>
 				<tr>
 					<th>Peak</th>
