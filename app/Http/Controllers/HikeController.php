@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
 class HikeController extends Controller {
 
@@ -37,8 +38,35 @@ class HikeController extends Controller {
     /**
      * Responds to requests to POST /hike/log
      */
-    public function postLog() {
-        return 'Process adding new hike';
+    public function postLog(Request $request) {
+        $this->validate($request, [
+            'mileage' => 'numeric',
+            'peaks' => 'required'
+        ]);
+
+        $hike = new \App\Hike();
+        $hike->date_hiked = $request->date_hiked;
+        $hike->mileage = $request->mileage;
+        $hike->rating = $request->rating;
+        $hike->notes = $request->notes;
+        $hike->public = ($request->public == 'on' ? true : false);
+        \Debugbar::info($hike->public);
+        $hike->user_id = \Auth::id();
+        $hike->save();
+
+        // Add the peaks
+        if($request->peaks) {
+            $peaks = $request->peaks;
+            dump($peaks);
+        }
+        else {
+            $peaks = [];
+        }
+
+        $hike->peaks()->attach($peaks);
+
+        \Session::flash('flash_message','Your hike was logged!');
+        return redirect('/');
     }
 
     /**

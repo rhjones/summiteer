@@ -14,14 +14,14 @@ class Peak extends Model
 
     public function getPeakList() {
 
-    $peaks = $this->orderby('elevation','DESC')->get();
+	    $peaks = $this->orderby('elevation','DESC')->get();
 
-    $peak_list = [];
-    foreach($peaks as $peak) {
-        $peak_list[$peak->id] = $peak->name;
-    }
+	    $peak_list = [];
+	    foreach($peaks as $peak) {
+	        $peak_list[$peak->id] = $peak->name;
+	    }
 
-    return $peak_list;
+	    return $peak_list;
 
-}
+	}
 }
