@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
+use Carbon\Carbon;
 
 class PeakController extends Controller {
 
@@ -28,30 +29,8 @@ class PeakController extends Controller {
         $public_hikes = $peak->hikes->where('public',1);
 
         foreach ($public_hikes as $hike) {
-            $today = date_create();
-            $date_of_hike = date_create_from_format('Y-m-d', $hike->date_hiked);
-            $diff = date_diff($date_of_hike, $today);
-            if ($diff->d <  1) {
-                $hike->date_hiked = $diff->format('%h hours');
-            }
-            else if ($diff->d === 1) {
-                $hike->date_hiked = '1 day';
-            }
-            else if ($diff->m < 1) {
-                $hike->date_hiked = $diff->format('%d days');
-            }
-            else if ($diff->m === 1) {
-                $hike->date_hiked = $diff->format ('1 month');
-            }
-            else if ($diff->y < 1) {
-                $hike->date_hiked = $diff->format ('%m months');
-            }
-            else if ($diff->y === 1) {
-                $hike->date_hiked = $diff->format ('1 year');
-            }
-            else {
-                $hike->date_hiked = $diff->format ('%y years');
-            }
+            $date_of_hike = Carbon::parse($hike->date_hiked);
+            $hike->date_hiked = $date_of_hike->diffForHumans();
         }
 
         return view('peaks.peak')->with(['peak' => $peak, 'public_hikes' => $public_hikes]);

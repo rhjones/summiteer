@@ -102,3 +102,9 @@ Route::get('/confirm-login-worked', function() {
     return;
 
 });
+
+
+/*----------------------------------------------------
+/practice
+-----------------------------------------------------*/
+Route::controller('/practice','PracticeController');

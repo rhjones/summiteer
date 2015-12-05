@@ -12,7 +12,7 @@
         			@foreach($public_hike->peaks as $peak)
 	        			{{ $peak->name }}
 	        		@endforeach 
-	        		<a href="/hike/{{ $public_hike->id }}">{{ $public_hike->date_hiked }} ago</a></p>
+	        		<a href="/hike/{{ $public_hike->id }}">{{ $public_hike->date_hiked }}</a></p>
         		<p>{{ $public_hike->rating }}</p>
         		<p>{{ $public_hike->notes }}</p>
         	</div>
