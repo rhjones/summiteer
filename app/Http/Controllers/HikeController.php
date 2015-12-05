@@ -18,7 +18,6 @@ class HikeController extends Controller {
         $hikes = \App\Hike::where('user_id','=',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
 
         foreach ($hikes as $hike) {
-            //$today = date('Y-m-d');
             $today = date_create();
             $date_of_hike = date_create_from_format('Y-m-d', $hike->date_hiked);
             $diff = date_diff($date_of_hike, $today);
@@ -31,8 +30,14 @@ class HikeController extends Controller {
             else if ($diff->m < 1) {
                 $hike->date_hiked = $diff->format('%d days');
             }
+            else if ($diff->m === 1) {
+                $hike->date_hiked = $diff->format ('1 month');
+            }
             else if ($diff->y < 1) {
                 $hike->date_hiked = $diff->format ('%m months');
+            }
+            else if ($diff->y === 1) {
+                $hike->date_hiked = $diff->format ('1 year');
             }
             else {
                 $hike->date_hiked = $diff->format ('%y years');
@@ -65,14 +70,15 @@ class HikeController extends Controller {
     public function postLog(Request $request) {
         $this->validate($request, [
             'mileage' => 'numeric',
-            'peaks' => 'required'
+            'peaks' => 'required',
+            'date_hiked' => 'required|date|before:tomorrow'
         ]);
 
         $hike = new \App\Hike();
         $hike->date_hiked = $request->date_hiked;
-        $hike->mileage = $request->mileage;
-        $hike->rating = $request->rating;
-        $hike->notes = $request->notes;
+        $hike->mileage = ($request->mileage ? $request->mileage : '');
+        $hike->rating = ($request->rating ? $request->rating : '');
+        $hike->notes = ($request->notes ? $request->notes : '');
         $hike->public = ($request->public == 'on' ? true : false);
         \Debugbar::info($hike->public);
         $hike->user_id = \Auth::id();

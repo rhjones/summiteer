@@ -5,8 +5,8 @@
         @yield('title') - PeakLogger
     </title>
 
-    <meta charset='utf-8'>
-    <link href="/css/peaklogger.css" type='text/css' rel='stylesheet'>
+    <meta charset="utf-8">
+    <link href="/css/peaklogger.css" type="text/css" rel="stylesheet">
 
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
     @yield('head')
@@ -15,19 +15,20 @@
 <body>
 
     @if(Session::get('flash_message') != null)
-        <div class='flash_message'>{{ Session::get('flash_message') }}</div>
+        <div class="flash_message">{{ Session::get('flash_message') }}</div>
     @endif
 
     <nav>
     <ul>
         @if(Auth::check())
-            <li><a href='/'>Home</a></li>
-            <li><a href='/hikes/log'>Log a hike</a></li>
-            <li><a href='/logout'>Log out</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/hikes">Your hikes</a></li>
+            <li><a href="/hikes/log">Log a hike</a></li>
+            <li><a href="/logout">Log out</a></li>
         @else
-            <li><a href='/'>Home</a></li>
-            <li><a href='/login'>Log in</a></li>
-            <li><a href='/register'>Register</a></li>
+            <li><a href="/">Home</a></li>
+            <li><a href="/login">Log in</a></li>
+            <li><a href="/register">Register</a></li>
         @endif
     </ul>
 </nav>
