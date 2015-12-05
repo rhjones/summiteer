@@ -17,7 +17,7 @@
 	        	</h1>
         		<p>{{ $hike->notes }}</p>
         		<p>{{ $hike->mileage }} miles</p>
-        		<p><a href="/hike/{{ $hike->id }}">{{ $hike->date_hiked }}</a></p>
+        		<p><a href="/hikes/show/{{ $hike->id }}">{{ $hike->date_hiked }}</a></p>
         	</div>
         @endforeach
     @endif

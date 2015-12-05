@@ -17,7 +17,7 @@ class HikeController extends Controller {
     * Displays an reverse-chronologically ordered list of a logged in user's hikes
     */
     public function getIndex() {
-        $hikes = \App\Hike::where('user_id','=',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
+        $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
 
         foreach ($hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
@@ -31,7 +31,8 @@ class HikeController extends Controller {
     * Responds to requests to GET /hikes/show/{id}
     */
     public function getShow($id) {
-        return view('hikes.show')->with('id', $id);
+        $hike = \App\Hike::where('id',$id)->with('peaks','user')->first();
+        return view('hikes.show')->with('hike', $hike);
     }
 
 

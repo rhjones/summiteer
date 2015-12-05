@@ -11,6 +11,7 @@ Summitteer is a hiking log for those attempting to join the AMC 4000 Footer Club
 	- [christianbach/tablesorter](https://github.com/christianbach/tablesorter)
 - Other
 	- [Accessible star rating widget with pure CSS](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/) by Lea Verou
+	- [nesbot/carbon](https://github.com/briannesbitt/carbon)
 
 
 
