@@ -14,6 +14,10 @@
 // Home view
 Route::get('/', 'HomeController@getIndex');
 
+/*----------------------------------------------------
+/ user registration and log in
+-----------------------------------------------------*/
+
 // Show login form
 Route::get('/login', 'Auth\AuthController@getLogin');
 
@@ -29,10 +33,20 @@ Route::get('/register', 'Auth\AuthController@getRegister');
 // Process registration form
 Route::post('/register', 'Auth\AuthController@postRegister');
 
-// routes for displaying peaks
+
+/*----------------------------------------------------
+/ display peak information
+-----------------------------------------------------*/
+
 Route::get('/peaks', 'PeakController@getIndex');
 
 Route::get('/peaks/{id}', 'PeakController@showPeak');
+
+/*----------------------------------------------------
+/ display hike information
+/ public hikes are visible to guests
+/ private hikes are only visible to user who logged them
+-----------------------------------------------------*/
 
 Route::get('/hikes/show/{id}', 'HikeController@getShow');
 
@@ -84,22 +98,6 @@ Route::get('/debug', function() {
     }
 
     echo '</pre>';
-
-});
-
-Route::get('/confirm-login-worked', function() {
-
-    # You may access the authenticated user via the Auth facade
-    $user = Auth::user();
-
-    if($user) {
-        echo 'You are logged in.';
-        dump($user->toArray());
-    } else {
-        echo 'You are not logged in.';
-    }
-
-    return;
 
 });
 
