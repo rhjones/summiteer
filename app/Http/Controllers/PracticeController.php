@@ -11,5 +11,10 @@ class PracticeController extends Controller {
 
         dump($carbondate);
     }
+
+    function getExample2() {
+        $user = \App\User::where('username', 'jillharvard')->first();
+        dump($user->hikes);
+    }
 		
 }

@@ -21,6 +21,10 @@
 	        	<p>{{ $hike->rating }}</p>
 	    		<p>{{ $hike->notes }}</p>
 	    	</div>
+
+	    	@if(Auth::id() === $hike->user->id)
+	    		<p><a href="/hikes/edit/{{ $hike->id }}">Edit</a> | <a href="/hikes/confirm-delete/{{ $hike->id }}">Delete</a></p>
+	    	@endif
 		@endif
 
     @endif

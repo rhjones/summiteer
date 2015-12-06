@@ -57,24 +57,25 @@ class HikeController extends Controller {
 
         $hike = new \App\Hike();
         $hike->date_hiked = $request->date_hiked;
+        $hike->public = ($request->public == 'on' ? true : false);
+        $hike->user_id = \Auth::id();
+
+        // optional fields
         $hike->mileage = ($request->mileage ? $request->mileage : '');
         $hike->rating = ($request->rating ? $request->rating : '');
         $hike->notes = ($request->notes ? $request->notes : '');
-        $hike->public = ($request->public == 'on' ? true : false);
-        \Debugbar::info($hike->public);
-        $hike->user_id = \Auth::id();
+        
         $hike->save();
 
-        // Add the peaks
+        // add the peaks
         if($request->peaks) {
             $peaks = $request->peaks;
-            dump($peaks);
         }
         else {
             $peaks = [];
         }
 
-        $hike->peaks()->attach($peaks);
+        $hike->peaks()->sync($peaks);
 
         \Session::flash('flash_message','Your hike was logged!');
         
@@ -85,56 +86,110 @@ class HikeController extends Controller {
      * Responds to requests to GET /hikes/edit/{id}
      */
     public function getEdit($id = null) {
-        return view('hikes.edit')->with('id', $id);
 
-        // $hike = \App\Hike::with('peaks')->find($id);
-        // if(is_null($hike)) {
-        //     \Session::flash('flash_message','Hike not found.');
-        //     return redirect('\hikes');
-        // }
-        // # Get all the possible authors so we can build the authors dropdown in the view
-        // $authorModel = new \App\Author();
-        // $authors_for_dropdown = $authorModel->getAuthorsForDropdown();
-        // # Get all the possible tags so we can include them with checkboxes in the view
-        // $tagModel = new \App\Tag();
-        // $tags_for_checkbox = $tagModel->getTagsForCheckboxes();
+        $hike = \App\Hike::with('peaks')->find($id);
+        if(is_null($hike)) {
+            \Session::flash('flash_message','Hike not found.');
+            return redirect('\hikes');
+        }
+
+        // get peak list
+        $peakModel = new \App\Peak();
+        $peak_list = $peakModel->getPeakList();
         
-        // Create a simple array of just the tag names for tags associated with this book;
-        // will be used in the view to decide which tags should be checked off
+        // Create a simple array of just the peaks associated with this hike;
+        // will be used in the view to decide which peaks should be checked off
         
-        // $tags_for_this_book = [];
-        // foreach($book->tags as $tag) {
-        //     $tags_for_this_book[] = $tag->name;
-        // }
-        // return view('books.edit')
-        //     ->with([
-        //         'book' => $book,
-        //         'authors_for_dropdown' => $authors_for_dropdown,
-        //         'tags_for_checkbox' => $tags_for_checkbox,
-        //         'tags_for_this_book' => $tags_for_this_book,
-        //     ]);
-    
+        $peaks_for_this_hike = [];
+        foreach($hike->peaks as $peak) {
+            $peaks_for_this_hike[] .= $peak->id;
+        }
+
+        return view('hikes.edit')
+            ->with([
+                'hike' => $hike,
+                'peak_list' => $peak_list,
+                'peaks_for_this_hike' => $peaks_for_this_hike,
+            ]);
+
     }
 
     /**
-     * Responds to requests to POST /hikes/edit/{id}
+     * Responds to requests to POST /hikes/edit
      */
-    public function postEdit() {
-        return 'Process form to edit hike';
+    public function postEdit(Request $request) {
+
+        $this->validate($request, [
+            'mileage' => 'numeric',
+            'peaks' => 'required',
+            'date_hiked' => 'required|date|before:tomorrow'
+        ]);
+
+        $hike = \App\Hike::find($request->id);
+
+        $hike->date_hiked = $request->date_hiked;
+        $hike->public = ($request->public == 'on' ? true : false);
+        $hike->user_id = \Auth::id();
+
+        // optional fields
+        $hike->mileage = ($request->mileage ? $request->mileage : '');
+        $hike->rating = ($request->rating ? $request->rating : '');
+        $hike->notes = ($request->notes ? $request->notes : '');
+        
+        $hike->save();
+
+        // add the peaks
+        if($request->peaks) {
+            $peaks = $request->peaks;
+        }
+        else {
+            $peaks = [];
+        }
+
+        $hike->peaks()->sync($peaks);
+
+        \Session::flash('flash_message','Your hike was updated.');
+        
+        return redirect('/hikes');
+
     }
 
     /**
-     * 
+     * Responds to requests to GET /hikes/confirm-delete/{id}
      */
     public function getConfirmDelete($id) {
-        return view('hikes.delete')->with('id', $id);
+
+        $hike = \App\Hike::find($id);
+
+        return view('hikes.delete')->with('hike', $hike);
     }
 
+
     /**
-     * 
+     * Responds to requests to GET /hikes/delete/{id}
      */
-    public function getDoDelete() {
-        return 'Delete hike';
+    public function getDoDelete($id) {
+
+        # Get the hike to be deleted
+        $hike = \App\Hike::find($id);
+
+        if(is_null($hike)) {
+            \Session::flash('flash_message','Hike not found.');
+            return redirect('/hikes');
+        }
+
+        # First remove any peaks associated with this hike
+        if($hike->peaks()) {
+            $hike->peaks()->detach();
+        }
+
+        # Then delete the hike
+        $hike->delete();
+
+        # Done
+        \Session::flash('flash_message','Your hike was deleted.');
+        return redirect('/hikes');
+
     }
 
 }

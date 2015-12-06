@@ -54,11 +54,12 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('hikes', 'HikeController@getIndex');
     Route::get('/hikes/log', 'HikeController@getLog');
     Route::post('/hikes/log', 'HikeController@postLog');
-    Route::get('/hikes/edit', 'HikeController@getEdit');
+    Route::get('/hikes/edit/{id?}', 'HikeController@getEdit');
     Route::post('/hikes/edit', 'HikeController@postEdit');
-    Route::get('/hikes/confirm-delete/{id}', 'HikeController@getConfirmDelete');
-  //  Route::get('/hike/delete/{id}', 'HikeController@getDoDelete');    
-
+    Route::get('/hikes/confirm-delete/{id?}', 'HikeController@getConfirmDelete');
+    Route::get('/hikes/delete/{id?}', 'HikeController@getDoDelete');  
+    Route::get('/user/confirm-delete/{username?}', 'UserController@getConfirmDelete');
+    Route::get('/user/delete/{username?}', 'UserController@getDoDelete');  
 });
 
 

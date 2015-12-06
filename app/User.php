@@ -37,9 +37,10 @@ class User extends Model implements AuthenticatableContract,
      */
     protected $hidden = ['password', 'remember_token'];
 
-    public function hike() {
+    public function hikes() {
         # User has many Hikes
         # Define a one-to-many relationship.
         return $this->hasMany('\App\Hike');
     }
+
 }

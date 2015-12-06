@@ -12,7 +12,7 @@ class HomeController extends Controller {
     }
 
     /**
-    * Responds to requests to GET /peaks
+    * Responds to requests to GET /
     */
     public function getIndex() {
         $public_hikes = \App\Hike::where('public', 1)->with('peaks')->orderBy('date_hiked','DESC')->take(10)->get();
