@@ -7,8 +7,9 @@
 
 	@if(!isset($hike))
 		<p>Hike not found.</p>
+	@elseif($hike->user_id !== Auth::id())
+		<p>You are not authorized to access this page.</p>
 	@else
-
 		<p>
 			@foreach($hike->peaks as $peak)
 				{{ $peak->name }}

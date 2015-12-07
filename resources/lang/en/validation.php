@@ -101,6 +101,15 @@ return [
         'mileage' => [
             'numeric' => 'Mileage must be a numeric value.',
         ],
+        'login' => [
+            'required' => 'Please enter your username or email address.',
+        ],
+        'password' => [
+            'required' => 'Please enter your password.'
+        ],
+        'email' => [
+            'required' => 'Please enter an email address.'
+        ],
     ],
 
     /*

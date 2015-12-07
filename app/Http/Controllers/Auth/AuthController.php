@@ -7,6 +7,8 @@ use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
 use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
+use Illuminate\Http\Request;
+use Auth;
 
 class AuthController extends Controller
 {
@@ -23,14 +25,17 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    # Where should the user be redirected to if their login succeeds?
+    // Where should the user be redirected to if their login succeeds?
     protected $redirectPath = '/hikes';
 
-    # Where should the user be redirected to if their login fails?
+    // Where should the user be redirected to if their login fails?
     protected $loginPath = '/login';
 
-    # Where should the user be redirected to after logging out?
+    // Where should the user be redirected to after logging out?
     protected $redirectAfterLogout = '/';
+
+    // sets up login form to handle email OR username as input
+    protected $username = 'login';
 
     /**
      * Create a new authentication controller instance.
@@ -88,4 +93,24 @@ class AuthController extends Controller
         \Session::flash('flash_message','You have been logged out.');
         return redirect(property_exists($this, 'redirectAfterLogout') ? $this->redirectAfterLogout : '/');
     }
+
+    /**
+     * Overwrites what's in AuthenticatesUsers.php.
+     * Examines the user's login input and determines whether it's an email address or a username.
+     * Returns the appropriately formatted credentials,
+     * which are then used by AuthenticatesUsers@postLogin
+     * from https://laracasts.com/discuss/channels/general-discussion/log-in-with-username-or-email-in-laravel-5/replies/105088
+     */
+
+    protected function getCredentials(Request $request)
+    {
+        $login = $request->get('login');
+        $field = filter_var($login, FILTER_VALIDATE_EMAIL) ? 'email' : 'username';
+
+        return [
+            $field => $login,
+            'password' => $request->password,
+        ];
+    }
+
 }

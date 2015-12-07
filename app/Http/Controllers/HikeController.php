@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
+use Auth;
 
 class HikeController extends Controller {
 
@@ -19,12 +20,28 @@ class HikeController extends Controller {
     public function getIndex() {
         $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
 
+        $welcome_messages = [
+            'Hi there, ',
+            'Ahoy, ',
+            'Hiya, ',
+            'Well hello, there, ',
+            'Howdy, ',
+        ];
+
+        $name = Auth::user()->first_name ? Auth::user()->first_name : Auth::user()->username;
+
+        $random = rand(0, (count($welcome_messages) - 1));
+        $welcome = $welcome_messages[$random] . $name. '.';
+
         foreach ($hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
             $hike->date_hiked = $date_of_hike->diffForHumans();
         }
 
-        return view('hikes.index')->with('hikes', $hikes);
+        return view('hikes.index')->with([
+            'hikes' => $hikes,
+            'welcome' => $welcome,
+            ]);
     }
 
     /**
@@ -90,7 +107,7 @@ class HikeController extends Controller {
         $hike = \App\Hike::with('peaks')->find($id);
         if(is_null($hike)) {
             \Session::flash('flash_message','Hike not found.');
-            return redirect('\hikes');
+            return redirect('/hikes');
         }
 
         // get peak list

@@ -59,7 +59,9 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/hikes/confirm-delete/{id?}', 'HikeController@getConfirmDelete');
     Route::get('/hikes/delete/{id?}', 'HikeController@getDoDelete');  
     Route::get('/user/confirm-delete/{username?}', 'UserController@getConfirmDelete');
-    Route::get('/user/delete/{username?}', 'UserController@getDoDelete');  
+    Route::get('/user/delete/{username?}', 'UserController@getDoDelete'); 
+    Route::get('/user/edit/{username?}', 'UserController@getEdit');
+    Route::post('/user/edit', 'UserController@postEdit'); 
 });
 
 

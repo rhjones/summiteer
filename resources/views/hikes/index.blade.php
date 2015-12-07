@@ -4,11 +4,14 @@
 
 @section('content')
 
+    <p>{{ $welcome }}</p>
+
     @if(sizeof($hikes) == 0)
         <p>You haven't logged any hikes yet. <a href="/hikes/log">Log one now!</a></p>
     @else
         @foreach($hikes as $hike)
-        	<div class="hike">
+            <? $private = ($hike->public == 0) ? ' private' : '' ?>
+        	<div class="hike{{ $private }}">
         		<h1>
 	        		@foreach($hike->peaks as $peak)
 	        			{{ $peak->name }}

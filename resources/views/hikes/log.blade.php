@@ -34,7 +34,7 @@
 
     	<div class="form-group">
             <label for="mileage">Mileage</label>
-            <input type="number" name="mileage" id="mileage" value="{{ old('mileage') }}">
+            <input type="number" name="mileage" id="mileage" step="any" value="{{ old('mileage') }}">
         </div>
 
         <fieldset class="rating">

@@ -15,7 +15,7 @@ class HomeController extends Controller {
     * Responds to requests to GET /
     */
     public function getIndex() {
-        $public_hikes = \App\Hike::where('public', 1)->with('peaks')->orderBy('date_hiked','DESC')->take(10)->get();
+        $public_hikes = \App\Hike::where('public', 1)->with('peaks', 'user')->orderBy('date_hiked','DESC')->take(10)->get();
 
         foreach ($public_hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
