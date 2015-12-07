@@ -2,11 +2,11 @@
 <html>
 <head>
     <title>
-        @yield('title') - PeakLogger
+        @yield('title') - Summiteer
     </title>
 
     <meta charset="utf-8">
-    <link href="/css/peaklogger.css" type="text/css" rel="stylesheet">
+    <link href="/css/summiteer.css" type="text/css" rel="stylesheet">
 
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
     @yield('head')
@@ -35,7 +35,7 @@
 </nav>
 
     <header>
-        <h1>@yield('title','PeakLogger')</h1>
+        <h1>@yield('title','Summiteer')</h1>
     </header>
 
     <section>

@@ -36,5 +36,5 @@
 
 @section('body')
 	<script src="js/jquery.tablesorter.min.js"></script>
-	<script src="js/peaklogger.js"></script>
+	<script src="js/summiteer.js"></script>
 @stop
