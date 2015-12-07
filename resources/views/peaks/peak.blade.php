@@ -16,7 +16,14 @@
     @endif
 
     @if(sizeof($public_hikes) == 0)
-        No public hikes have been logged for {{ $peak->name }}. <a href="/hikes/log">Log one now!</a>
+        <p>No public hikes have been logged for {{ $peak->name }}. 
+            @if(Auth::check())
+                <a href="/hikes/log">
+            @else
+                <a href="/login">
+            @endif
+            Log one now!</a>
+        </p>
     @else
         @foreach($public_hikes as $public_hike)
         	<div class="publichike">

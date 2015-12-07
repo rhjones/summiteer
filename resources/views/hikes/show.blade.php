@@ -14,7 +14,7 @@
 	    		<p>{{ $hike->user->first_name ? $hike->user->first_name : $hike->user->username }}</p>
 	    		<p>
 	    			@foreach($hike->peaks as $peak)
-	        			{{ $peak->name }}
+	        			<a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a>
 	        		@endforeach 
 	        		&mdash; {{ $hike->mileage ? $hike->mileage . ' miles' : '' }}
 	        	</p>

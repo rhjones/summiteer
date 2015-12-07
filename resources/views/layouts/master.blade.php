@@ -22,12 +22,14 @@
     <ul>
         @if(Auth::check())
             <li><a href="/">Home</a></li>
+            <li><a href="/peaks">Peaks</a></li>
             <li><a href="/hikes">Your hikes</a></li>
             <li><a href="/user/edit/{{ Auth::user()->username }}">Settings</a></li>
             <li><a href="/hikes/log">Log a hike</a></li>
             <li><a href="/logout">Log out</a></li>
         @else
             <li><a href="/">Home</a></li>
+            <li><a href="/peaks">Peaks</a></li>
             <li><a href="/login">Log in</a></li>
             <li><a href="/register">Register</a></li>
         @endif
