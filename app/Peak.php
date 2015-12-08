@@ -12,9 +12,15 @@ class Peak extends Model
     	return $this->belongsToMany('\App\Hike')->withTimestamps();
     }
 
+    public function users()
+    {
+    	# With timestamps() will ensure the pivot table has its created_at/updated_at fields automatically maintained
+    	return $this->belongsToMany('\App\User')->withTimestamps();
+    }
+
     public function getPeakList() {
 
-	    $peaks = $this->orderby('elevation','DESC')->get();
+	    $peaks = $this->orderby('name','ASC')->get();
 
 	    $peak_list = [];
 	    foreach($peaks as $peak) {

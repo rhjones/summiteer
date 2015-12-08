@@ -43,4 +43,9 @@ class User extends Model implements AuthenticatableContract,
         return $this->hasMany('\App\Hike');
     }
 
+    public function peaks() {
+        # With timestamps() will ensure the pivot table has its created_at/updated_at fields automatically maintained
+        return $this->belongsToMany('\App\Peak')->withTimestamps();
+    }
+
 }

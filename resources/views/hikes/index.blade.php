@@ -5,6 +5,7 @@
 @section('content')
 
     <p>{{ $welcome }}</p>
+    <p>As of today, you've hiked {{ $count }} of the White Mountain Four Thousand Footers. <a href="/peaks">See details.</a></p>
 
     @if(sizeof($hikes) == 0)
         <p>You haven't logged any hikes yet. <a href="/hikes/log">Log one now!</a></p>

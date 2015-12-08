@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
+use Auth;
 
 class PeakController extends Controller {
 
@@ -16,7 +17,16 @@ class PeakController extends Controller {
     */
     public function getIndex() {
         $peaks = \App\Peak::orderBy('elevation','DESC')->get();
-        return view('peaks.index')->with('peaks',$peaks);
+
+        if(\Auth::check()) {
+            $user = \App\User::with('peaks')->find(\Auth::id());
+            $user_peaks = $user->peaks;
+            $peaks_summitted = [];
+            foreach($user_peaks as $peak) {
+                array_push($peaks_summitted,$peak->id);
+            }
+        }
+        return view('peaks.index')->with(['peaks' => $peaks, 'peaks_summitted' => $peaks_summitted]);
     }
 
     /**

@@ -10,6 +10,9 @@
     	<table id="sortabletable">
 			<thead>
 				<tr>
+					@if(Auth::check())
+						<th>Summitted</th>
+					@endif
 					<th>Peak</th>
 					<th>Elevation</th>
 					<th>Prominence</th>
@@ -21,6 +24,14 @@
 			<tbody>
 	        @foreach($peaks as $peak)
 	            <tr>
+	            	@if(Auth::check())
+	            		<? $summitted = in_array($peak->id,$peaks_summitted); ?>
+	            		<td>
+	            			@if($summitted)
+	            				icon
+	            			@endif
+	            		</td>
+	            	@endif
 	                <td><a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a> <a href="{{ $peak->description_link }}">description (icon TK)</a> <a href="{{ $peak->forecast }}" title="Get forecast">forecast (icon TK)</a></td>
 	                <td>{{ $peak->elevation }}</td>
 	                <td>{{ $peak->prominence }}</td>

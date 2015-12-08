@@ -38,9 +38,14 @@ class HikeController extends Controller {
             $hike->date_hiked = $date_of_hike->diffForHumans();
         }
 
+        $user = \App\User::with('peaks')->find(\Auth::id());
+        $user_peaks = $user->peaks;
+        $count = count($user_peaks);
+
         return view('hikes.index')->with([
             'hikes' => $hikes,
             'welcome' => $welcome,
+            'count' => $count,
             ]);
     }
 
