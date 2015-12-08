@@ -105,11 +105,26 @@ return [
             'required' => 'Please enter your username or email address.',
         ],
         'password' => [
-            'required' => 'Please enter your password.'
+            'required' => 'Please enter your password.',
         ],
         'email' => [
-            'required' => 'Please enter an email address.'
+            'required' => 'Please enter an email address.',
+            'email' => 'Please enter a valid email address.',
+            'max:255' => 'Your email address cannot have more than 255 characters.',
         ],
+        'username' => [
+            'required' => 'Please enter a username.',
+            'max:255' => 'Your username cannot have more than 255 characters.',
+        ],
+        'first_name' => [
+            'max:255' => 'Your first name cannot have more than 255 characters.',
+        ],
+        'last_name' => [
+            'max:255' => 'Your last name cannot have more than 255 characters.',
+        ],
+        'current_password' => [
+            'required' => 'Please enter your current password in the "current password" field.',
+        ]
     ],
 
     /*
