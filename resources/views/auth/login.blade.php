@@ -4,8 +4,6 @@
 
 @section('content')
 
-    <p>Don't have an account? <a href='register'>Register here...</a></p>
-
     @if(count($errors) > 0)
         <ul class='errors'>
             @foreach ($errors->all() as $error)
@@ -36,4 +34,6 @@
         <button type='submit' class='btn btn-primary'>Login</button>
 
     </form>
+
+    <p>No account? <a href='register'>Sign up &raquo;</a></p>
 @stop

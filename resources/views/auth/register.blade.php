@@ -1,10 +1,10 @@
 @extends('layouts.master')
 
-@section('title', 'Register')
+@section('title', 'Join Summitteer today.')
 
 @section('content')
 
-    <p>Already have an account? <a href='login'>Login here...</a></p>
+    
 
     @if(count($errors) > 0)
         <ul class='errors'>
@@ -50,5 +50,7 @@
         <button type='submit' class='btn btn-primary'>Register</button>
 
     </form>
+
+    <p>H ave an account? <a href='login'>Log in &raquo;</a></p>
 
 @stop
