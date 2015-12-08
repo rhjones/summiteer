@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Hikes')
+@section('title', 'Your hikes')
 
 @section('content')
 
@@ -13,14 +13,22 @@
         @foreach($hikes as $hike)
             <? $private = ($hike->public == 0) ? ' private' : '' ?>
         	<div class="hike{{ $private }}">
-        		<h1>
-	        		@foreach($hike->peaks as $peak)
-	        			{{ $peak->name }}
-	        		@endforeach
-	        		{{ $hike->rating }}
-	        	</h1>
-        		<p>{{ $hike->notes }}</p>
-        		<p>{{ $hike->mileage }} miles</p>
+                <span class="hike-rating">
+                    @for($i = 0; $i < $hike->rating; $i++)
+                        <i class="fa fa-star"></i>
+                    @endfor
+                </span>
+                <span class="hike-mileage">
+                    {{ $hike->mileage ? $hike->mileage . ' miles' : '' }}
+                </span>
+                <span class="hike-head">
+                    <ul class="peaklist">
+                        @foreach($hike->peaks as $peak)
+                            <li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
+                        @endforeach 
+                    </ul>
+                </span>
+                <p>{!! nl2br(e($hike->notes)) !!}</p>
         		<p><a href="/hikes/show/{{ $hike->id }}">{{ $hike->date_hiked }}</a></p>
                 <p><a href="/hikes/edit/{{ $hike->id }}">Edit</a> | <a href="/hikes/confirm-delete/{{ $hike->id }}">Delete</a></p>
         	</div>

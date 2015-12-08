@@ -8,13 +8,13 @@
     @else
         @foreach($public_hikes as $public_hike)
         	<div class="publichike">
-        		<p>{{ $public_hike->user->first_name ? $public_hike->user->first_name : $public_hike->user->username }} hiked 
-        			@foreach($public_hike->peaks as $peak)
-	        			<a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a>
-	        		@endforeach 
-	        		<a href="/hikes/show/{{ $public_hike->id }}">{{ $public_hike->date_hiked }}</a></p>
-        		<p>{{ $public_hike->rating }}</p>
-        		<p>{{ $public_hike->notes }}</p>
+        		{{ $public_hike->user->first_name ? $public_hike->user->first_name : $public_hike->user->username }} hiked 
+        			<ul class="peaklist">
+                        @foreach($public_hike->peaks as $peak)
+    	        			<li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
+    	        		@endforeach 
+                    </ul>
+	        		<a href="/hikes/show/{{ $public_hike->id }}">{{ $public_hike->date_hiked }}</a>
         	</div>
         @endforeach
     @endif

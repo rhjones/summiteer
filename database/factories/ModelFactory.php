@@ -23,12 +23,26 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
 });
 
 $factory->define(App\Hike::class, function (Faker\Generator $faker) {
+    $hike_notes = [
+        'Awesome trail.',
+        'Loved the view!',
+        'Super challenging.',
+        'Great day for a hike!',
+        'Watch out for the rocky footing.',
+        'Wish I\'d brought more water!',
+        'Glad I brought my poles.',
+        'Best summit yet!',
+        'Weather was beautiful.',
+    ];
+
+    $hike_note = $hike_notes[rand(0, (count($hike_notes) - 1))];
     return [
-        'date_hiked' => $faker->date($format = 'Y-m-d', $max = 'now'),
-        'mileage' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1.0, $max = 150.00),
+        //'date_hiked' => $faker->date($format = 'Y-m-d', $min = '2013-01-01', $max = 'now'),
+        'date_hiked' => $faker->dateTimeBetween($startDate = '-3 years', $endDate = 'now'),
+        'mileage' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1.0, $max = 15.0),
         'rating' => $faker->numberBetween($min = 1, $max = 5),
-        'notes' => $faker->text($maxNbChars = 200),
+        'notes' => $hike_note,
         'public' => $faker->boolean($chanceOfGettingTrue = 50),
-        'user_id' => $faker->numberBetween($min = 1, $max = 4),
+        'user_id' => $faker->numberBetween($min = 1, $max = 5),
     ];
 });

@@ -2,8 +2,8 @@
  * Accessible star rating widget with pure CSS
  * By Lea Verou
  * http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/
+ * I've made some aesthetic edits
 */
-
 
 .rating {
     float:left;
@@ -25,7 +25,7 @@
     overflow:hidden;
     white-space:nowrap;
     cursor:pointer;
-    font-size:200%;
+    font-size:100%;
     line-height:1.2;
     color:#ddd;
     text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
@@ -62,7 +62,42 @@
 }
 
 
+/*
+ * Display peak list in hike log forms as multiple columns
+*/
+
 ul.columns li {
     display: inline-block;
     width: 20%
+}
+
+/*
+ * Display peaks summitted in a single hike as nicely comma-separated list
+*/
+
+.peaklist {
+    display: inline;
+    padding: 0;
+}
+
+.peaklist li {
+    display: inline;
+}
+.peaklist li:not(:last-child):after { 
+    content: ","; 
+}
+
+.peaklist li:nth-last-child(2):after { 
+    content: " and"; 
+}
+
+/*
+ * Display hikes
+*/
+.hike-head {
+    font-weight: bold;
+}
+
+.hike-rating {
+    /* perhaps left-align and offset a bit, along with mileage? */
 }

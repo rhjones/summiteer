@@ -16,12 +16,11 @@ class PeakController extends Controller {
     * Responds to requests to GET /peaks
     */
     public function getIndex() {
-        $peaks = \App\Peak::orderBy('elevation','DESC')->get();
-
+        $peaks = \App\Peak::orderBy('name','ASC')->get();
+        $peaks_summitted = [];
         if(\Auth::check()) {
             $user = \App\User::with('peaks')->find(\Auth::id());
             $user_peaks = $user->peaks;
-            $peaks_summitted = [];
             foreach($user_peaks as $peak) {
                 array_push($peaks_summitted,$peak->id);
             }

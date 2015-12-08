@@ -11,14 +11,21 @@
 			<p>Whoops! This hike was logged privately. Try choosing a <a href="/peaks">peak</a> to find some public hikes.</p>
 	    @else
 			<div class="hike">
-	    		<p>{{ $hike->user->first_name ? $hike->user->first_name : $hike->user->username }}</p>
-	    		<p>
-	    			@foreach($hike->peaks as $peak)
-	        			<a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a>
-	        		@endforeach 
-	        		&mdash; {{ $hike->mileage ? $hike->mileage . ' miles' : '' }}
-	        	</p>
-	        	<p>{{ $hike->rating }}</p>
+				<span class="hike-rating">
+					@for($i = 0; $i < $hike->rating; $i++)
+	                        <i class="fa fa-star"></i>
+	                @endfor
+	            </span>
+	            <span class="hike-mileage">
+                    {{ $hike->mileage ? $hike->mileage . ' miles' : '' }}
+                </span>
+    			{{ $hike->user->first_name ? $hike->user->first_name : $hike->user->username }} hiked
+	    		<ul class="peaklist">
+                    @foreach($hike->peaks as $peak)
+                        <li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
+                    @endforeach 
+                </ul>
+                {{ $hike->date_hiked }}
 	    		<p>{{ $hike->notes }}</p>
 	    	</div>
 

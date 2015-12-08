@@ -54,6 +54,8 @@ class HikeController extends Controller {
     */
     public function getShow($id) {
         $hike = \App\Hike::where('id',$id)->with('peaks','user')->first();
+        $date_of_hike = Carbon::parse($hike->date_hiked);
+        $hike->date_hiked = $date_of_hike->diffForHumans();
         return view('hikes.show')->with('hike', $hike);
     }
 
@@ -97,7 +99,10 @@ class HikeController extends Controller {
             $peaks = [];
         }
 
+        $user = \App\User::find(\Auth::id());
+
         $hike->peaks()->sync($peaks);
+        $user->peaks()->sync($peaks,false);
 
         \Session::flash('flash_message','Your hike was logged!');
         
