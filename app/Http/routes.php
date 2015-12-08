@@ -13,6 +13,7 @@
 
 // Home view
 Route::get('/', 'HomeController@getIndex');
+Route::get('/about', 'HomeController@getAbout');
 
 /*----------------------------------------------------
 / user registration and log in

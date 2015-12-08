@@ -25,5 +25,12 @@ class HomeController extends Controller {
         return view('welcome')->with(['public_hikes' => $public_hikes]);
     }
 
+    /**
+    * Responds to requests to GET /about
+    */
+    public function getAbout() {
+        return view ('about');
+    }
+
 
 }
