@@ -28,7 +28,7 @@
 	            		<? $summitted = in_array($peak->id,$peaks_summitted); ?>
 	            		<td>
 	            			@if($summitted)
-	            				icon
+	            				<i class="fa fa-check"></i>
 	            			@endif
 	            		</td>
 	            	@endif
