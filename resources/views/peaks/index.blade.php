@@ -1,6 +1,6 @@
 @extends('layouts.master')
 
-@section('title', 'Peaks')
+@section('title', 'White Mountain 4000 Footers')
 
 @section('content')
 
@@ -10,10 +10,10 @@
     	<table id="sortabletable">
 			<thead>
 				<tr>
+					<th>Peak</th>
 					@if(Auth::check())
 						<th>Summitted</th>
 					@endif
-					<th>Peak</th>
 					<th>Elevation</th>
 					<th>Prominence</th>
 					<th>Location</th>
@@ -24,7 +24,8 @@
 			<tbody>
 	        @foreach($peaks as $peak)
 	            <tr>
-	            	@if(Auth::check())
+	                <td><a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a> <a href="{{ $peak->description_link }}">description (icon TK)</a> <a href="{{ $peak->forecast }}" title="Get forecast">forecast (icon TK)</a></td>
+	                @if(Auth::check())
 	            		<? $summitted = in_array($peak->id,$peaks_summitted); ?>
 	            		<td>
 	            			@if($summitted)
@@ -32,7 +33,6 @@
 	            			@endif
 	            		</td>
 	            	@endif
-	                <td><a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a> <a href="{{ $peak->description_link }}">description (icon TK)</a> <a href="{{ $peak->forecast }}" title="Get forecast">forecast (icon TK)</a></td>
 	                <td>{{ $peak->elevation }}</td>
 	                <td>{{ $peak->prominence }}</td>
 	                <td>{{ $peak->location }}, {{ $peak->state }}</td>
