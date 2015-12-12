@@ -25,6 +25,11 @@ class PeakController extends Controller {
                 array_push($peaks_summitted,$peak->id);
             }
         }
+        foreach($peaks as $peak) {
+            if(in_array($peak->id,$peaks_summitted)) {
+                $peak->summitted = 1;
+            }
+        }
         return view('peaks.index')->with(['peaks' => $peaks, 'peaks_summitted' => $peaks_summitted]);
     }
 

@@ -37,9 +37,8 @@
 		                	<a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a> 
 		                </td>
 		                @if(Auth::check())
-		            		<? $summitted = in_array($peak->id,$peaks_summitted); ?>
 		            		<td>
-		            			@if($summitted)
+		            			@if($peak->summitted)
 		            				<i class="fa fa-check"></i>
 		            				<span class="sr-only">Summitted</span>
 		            			@endif

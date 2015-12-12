@@ -19,6 +19,7 @@ class HikeController extends Controller {
     */
     public function getIndex() {
         $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
+        $user = \App\User::with('peaks')->find(\Auth::id());
 
         $welcome_messages = [
             'Hi there, ',
@@ -28,7 +29,7 @@ class HikeController extends Controller {
             'Howdy, ',
         ];
 
-        $name = Auth::user()->first_name ? Auth::user()->first_name : Auth::user()->username;
+        $name = $user->first_name ? $user->first_name : $user->username;
 
         $random = rand(0, (count($welcome_messages) - 1));
         $welcome = $welcome_messages[$random] . $name. '.';
@@ -40,8 +41,7 @@ class HikeController extends Controller {
                 $hike->private = ' private';
             }
         }
-
-        $user = \App\User::with('peaks')->find(\Auth::id());
+        
         $user_peaks = $user->peaks;
         $count = count($user_peaks);
         $progress = ($count / 48) * 100;
