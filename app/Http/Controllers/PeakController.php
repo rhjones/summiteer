@@ -45,6 +45,10 @@ class PeakController extends Controller {
             return redirect('/peaks');
         }
 
+        dump($peak);
+
+        dump($peak->hikes);
+
         $public_hikes = $peak->hikes->where('public',1);
 
         dump($public_hikes);
