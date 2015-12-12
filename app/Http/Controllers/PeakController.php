@@ -47,7 +47,7 @@ class PeakController extends Controller {
 
         dump($peak);
 
-        dump($peak->hikes);
+        dump($peak->hikes->where('public','1'));
 
         $public_hikes = $peak->hikes->where('public',1);
 
