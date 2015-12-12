@@ -27,6 +27,7 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 - Other
 	- [Accessible star rating widget with pure CSS](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/) by Lea Verou
 	- [nesbot/carbon](https://github.com/briannesbitt/carbon)
+	- [twbs/bootstrap](https://github.com/twbs/bootstrap)
 
 
 

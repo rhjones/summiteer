@@ -1,3 +1,52 @@
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    font-family: 'Playfair Display', serif;
+}
+
+/*
+ * Display peak list in hike log forms as multiple columns
+*/
+
+ul.columns li {
+    display: inline-block;
+    width: 20%
+}
+
+/*
+ * Display peaks summitted in a single hike as nicely comma-separated list
+*/
+
+.peaklist {
+    display: inline;
+    padding: 0;
+}
+
+.peaklist li {
+    display: inline;
+}
+.peaklist li:not(:last-child):after { 
+    content: ","; 
+}
+
+.peaklist li:nth-last-child(2):after { 
+    content: " and"; 
+}
+
+/*
+ * Display hikes
+*/
+.hike-head {
+    font-weight: bold;
+}
+
+.hike-rating {
+    /* perhaps left-align and offset a bit, along with mileage? */
+}
+
+
 /*
  * Accessible star rating widget with pure CSS
  * By Lea Verou
@@ -59,45 +108,4 @@
     position:relative;
     top:2px;
     left:2px;
-}
-
-
-/*
- * Display peak list in hike log forms as multiple columns
-*/
-
-ul.columns li {
-    display: inline-block;
-    width: 20%
-}
-
-/*
- * Display peaks summitted in a single hike as nicely comma-separated list
-*/
-
-.peaklist {
-    display: inline;
-    padding: 0;
-}
-
-.peaklist li {
-    display: inline;
-}
-.peaklist li:not(:last-child):after { 
-    content: ","; 
-}
-
-.peaklist li:nth-last-child(2):after { 
-    content: " and"; 
-}
-
-/*
- * Display hikes
-*/
-.hike-head {
-    font-weight: bold;
-}
-
-.hike-rating {
-    /* perhaps left-align and offset a bit, along with mileage? */
 }

@@ -6,8 +6,9 @@
     </title>
 
     <meta charset="utf-8">
-    <link href="/css/app.css" rel="stylesheet">
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700|Playfair+Display:400,400italic' rel='stylesheet' type='text/css'>
+    <link href="/css/app.css" rel="stylesheet">
     <link href="/css/summiteer.css" rel="stylesheet">
 
     {{-- Yield any page specific CSS files or anything else you might want in the <head> --}}
@@ -48,10 +49,11 @@
     </section>
 
     <footer>
-        &copy; {{ date('Y') }}
+        <p>Rebekah Heacock Jones, 2015 | <a href="http://github.com/rebekahheacock/dwa15-p4">code on github</a></p>
     </footer>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="/js/bootstrap.min.js"></script>
 
     {{-- Yield any page specific JS files or anything else you might want at the end of the body --}}
     @yield('body')
