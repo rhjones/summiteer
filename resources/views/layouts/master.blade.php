@@ -72,10 +72,6 @@
         @yield('content')
     </section>
 
-    <footer>
-        <p>Rebekah Heacock Jones, 2015 | <a href="http://github.com/rebekahheacock/dwa15-p4">code on github</a></p>
-    </footer>
-
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
     <script src="/js/bootstrap.min.js"></script>
 

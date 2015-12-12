@@ -18,9 +18,7 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 - Users can log in using either their username or their email address. For DWA15 purposes, usernames for the standard users are "jillharvard" and "jamalharvard."
 
 ## TODO
-
-- Fix mobile display: check breakpoints
-- 
+- Error: register, then try to create a public hike. 
 
 
 ## Outside Resources
