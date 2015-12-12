@@ -16,11 +16,9 @@ class UserController extends Controller {
     /**
      * Responds to requests to GET /users/edit/{username}
      */
-    public function getEdit($username = null) {
+    public function getEdit() {
 
-        $user = \App\User::where('username', $username)->first();
-        \Debugbar::addMessage('user id is: '.$user->id);
-        \Debugbar::addMessage('auth id is: '.Auth::id());
+        $user = \Auth::user();
 
         if(is_null($user)) {
             \Session::flash('flash_message','User not found.');
