@@ -4,15 +4,16 @@
 
 @section('content')
 
-    @if(count($errors) > 0)
-        <ul class='errors'>
-            @foreach ($errors->all() as $error)
-                <li><span class='fa fa-exclamation-circle'></span> {{ $error }}</li>
-            @endforeach
-        </ul>
-    @endif
+    <div class="centerbox">
 
-    <div class="formbox">
+        @if(count($errors) > 0)
+            <ul class='errors'>
+                @foreach ($errors->all() as $error)
+                    <li><span class='fa fa-exclamation-circle'></span> {{ $error }}</li>
+                @endforeach
+            </ul>
+        @endif
+        
         <form method='POST' action='/login'>
 
             {!! csrf_field() !!}

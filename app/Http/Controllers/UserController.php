@@ -87,6 +87,11 @@ class UserController extends Controller {
     public function getConfirmDelete($username = null) {
         $user = \App\User::where('username', $username)->first();
 
+        if(is_null($user)) {
+            \Session::flash('flash_message','User not found.');
+            return redirect('/');
+        }
+
         return view('user.delete')->with('user', $user);
     }
 

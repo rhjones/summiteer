@@ -24,7 +24,7 @@ class HikeController extends Controller {
             'Hi there, ',
             'Ahoy, ',
             'Hiya, ',
-            'Well hello, there, ',
+            'Well hello there, ',
             'Howdy, ',
         ];
 
@@ -41,11 +41,13 @@ class HikeController extends Controller {
         $user = \App\User::with('peaks')->find(\Auth::id());
         $user_peaks = $user->peaks;
         $count = count($user_peaks);
+        $progress = ($count / 48) * 100;
 
         return view('hikes.index')->with([
             'hikes' => $hikes,
             'welcome' => $welcome,
             'count' => $count,
+            'progress' => $progress,
             ]);
     }
 
@@ -54,6 +56,18 @@ class HikeController extends Controller {
     */
     public function getShow($id) {
         $hike = \App\Hike::where('id',$id)->with('peaks','user')->first();
+
+        if(is_null($hike)) {
+            \Session::flash('flash_message','Hike not found.');
+            if (\Auth::check()) {
+                return redirect('/hikes');
+            }
+            else {
+                return redirect('/');
+            }
+            
+        }
+
         $date_of_hike = Carbon::parse($hike->date_hiked);
         $hike->date_hiked = $date_of_hike->diffForHumans();
         return view('hikes.show')->with('hike', $hike);
@@ -187,6 +201,14 @@ class HikeController extends Controller {
     public function getConfirmDelete($id) {
 
         $hike = \App\Hike::find($id);
+
+        if(is_null($hike)) {
+            \Session::flash('flash_message','Hike not found.');
+            return redirect('/hikes');
+        }
+
+        $date_of_hike = Carbon::parse($hike->date_hiked);
+        $hike->date_hiked = $date_of_hike->diffForHumans();
 
         return view('hikes.delete')->with('hike', $hike);
     }

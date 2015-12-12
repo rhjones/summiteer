@@ -8,19 +8,29 @@
 
         <div class="row" id="welcome">
 
-            <div class="col-md-3">
+            <div class="col-md-4">
 
                 <div class="enter">
                     <a class="btn btn-entry" href="{{ Auth::check() ? '/log' : '/login' }}" role="button">Start tracking</a>
                 </div>
             </div>
 
-            <div class="col-md-9">
-
-            	@if(sizeof($public_hikes) == 0)
-                    No public hikes have been logged yet. <a href="/hikes/log">Log one now!</a>
-                @else
-                    <div class="publiclog">
+            <div class="col-md-8">
+                <div class="publiclog">
+                	@if(sizeof($public_hikes) == 0)
+                        <div class="nohikes">
+                            <p>No public hikes have been logged yet.</p>
+                            <p>
+                                @if(Auth::check())
+                                    <a class="btn btn-primary" href="/hikes/log">
+                                @else
+                                    <a class="btn btn-primary" href="/login">
+                                @endif
+                                Log one now!</a>
+                            </p>
+                        </div>
+                    @else
+                    
                         @foreach($public_hikes as $public_hike)
                         	<div class="publichike">
                     			<ul class="peaklist">
@@ -43,8 +53,8 @@
                                 </p>	
                         	</div>
                         @endforeach
-                    </div>
-                @endif
+                    @endif
+                </div>
 
             </div>
 

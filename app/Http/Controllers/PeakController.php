@@ -16,7 +16,7 @@ class PeakController extends Controller {
     * Responds to requests to GET /peaks
     */
     public function getIndex() {
-        $peaks = \App\Peak::orderBy('name','ASC')->get();
+        $peaks = \App\Peak::orderBy('elevation','DESC')->get();
         $peaks_summitted = [];
         if(\Auth::check()) {
             $user = \App\User::with('peaks')->find(\Auth::id());
@@ -34,6 +34,11 @@ class PeakController extends Controller {
     public function showPeak($id) {
         
         $peak = \App\Peak::where('id',$id)->with('hikes.user')->first();
+
+        if(is_null($peak)) {
+            \Session::flash('flash_message','Peak not found.');
+            return redirect('/peaks');
+        }
 
         $public_hikes = $peak->hikes->where('public',1);
 

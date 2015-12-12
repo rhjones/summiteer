@@ -4,12 +4,16 @@
 
 @section('content')
 
+<div class="container">
+
+	
 	@if(!isset($hike))
 		<p>Hike not found.</p>
 	@elseif($hike->user_id !== Auth::id())
-		<p>You are not authorized to access this page.</p>
+		<h1 class="error"><i class="fa fa-ban"></i> Uh oh.</h1>
+		<p>This hike doesn't belong to you. Why don't you check out <a href="/hikes">your hikes</a> instead?</p>
 	@else
-		<p><a href="/hikes/confirm-delete/{{ $hike->id }}">Delete this hike</a></p>
+		<h1>Edit your hike <small><a href="/hikes/confirm-delete/{{ $hike->id }}"><i class="fa fa-trash-o"></i> delete</a></small></h1>
 
 	    <form method="POST" action="/hikes/edit">
 
@@ -30,13 +34,13 @@
 
 			<div class="form-group">
 				<label for="date_hikes">Date Hiked*</label>
-				<input type="date" name="date_hiked" id="date_hiked" value="{{ $hike->date_hiked }}">
+				<input type="date" class='form-control' name="date_hiked" id="date_hiked" value="{{ $hike->date_hiked }}">
 			</div>
 	    	
 
 	    	<div class="form-group">
 	            <label for="mileage">Mileage</label>
-	            <input type="number" name="mileage" id="mileage" step="any" value="{{ $hike->mileage }}">
+	            <input type="number" class='form-control' name="mileage" id="mileage" step="any" value="{{ $hike->mileage }}">
 	        </div>
 
 	        <fieldset class="rating">
@@ -49,7 +53,7 @@
 
 			<div class="form-group">
 				<label for="notes">Notes</label>
-				<textarea name="notes" id="notes" rows="10" cols="50">{{ $hike->notes }}</textarea>
+				<textarea name="notes" class='form-control' id="notes" rows="3" cols="50">{{ $hike->notes }}</textarea>
 			</div>
 
 			<div class="form-group">
@@ -59,9 +63,10 @@
 
 	        
 
-	        <button type="submit">Log hike</button>
+	        <button type='submit' class='btn btn-primary'>Save edits</button>
 
 	    </form>
 	@endif
+</div>
     
 @stop

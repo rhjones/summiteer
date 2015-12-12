@@ -1,5 +1,10 @@
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+h1 small {
+    display: inline-block;
 }
 
 body {
@@ -33,6 +38,11 @@ footer {
     font-family: 'Montserrat', sans-serif;
 }
 
+.row {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
 /*
  * Welcome page
 */
@@ -43,8 +53,6 @@ footer {
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    padding-top: 20px;
-    padding-bottom: 20px;
 }
 
 .enter {
@@ -67,19 +75,6 @@ footer {
 
 .btn-entry:hover {
     background-color: #e6e6e6;
-}
-
-.publiclog  {
-    background: rgba(255, 255, 255, 0.7);
-    border-radius: 8px;
-}
-
-.publichike {
-    padding: 20px;
-}
-
-.publichike:not(:last-child) {
-    border-bottom: 1px solid #CCC;
 }
 
 /*
@@ -113,40 +108,84 @@ footer {
 */
 
 @media (min-width: 768px) {
-    .formbox {
+    .centerbox {
         max-width: 400px;
     }
 }
 
-.formbox {
+.centerbox {
     margin: 20px auto;
     padding: 0 10px 0 10px;
     text-align: center;
 }
 
+fieldset {
+    border: 1px solid #E5E5E5;
+    margin: 0 2px 10px 0px;
+    padding: 0.35em 0.625em 0.75em;
+    border-radius: 4px;
+}
+
+legend {
+    font-size: 14px;
+    display: inline;
+    width: auto;
+    border: 0;
+    margin-bottom: 0;
+}
+
 .form-group {
     text-align: left;
+    clear: both;
 }
 
 label {
     font-weight: normal;
 }
 
-button {
+.btn {
     font-family: 'Montserrat', sans-serif;
     text-transform: uppercase;
 }
 
 
+/*
+ * Errors
+*/
+
+ul.errors {
+    list-style-type: none;
+    color: #a94442;
+    text-align: left;
+    padding: 0;
+    margin: 10px 0 10px 0;
+}
+
+.error {
+    color: #a94442;
+}
 
 
 /*
  * Display peak list in hike log forms as multiple columns
 */
 
+ul.columns {
+    margin: 0 auto;
+    padding: 0 10px;
+}
+
 ul.columns li {
     display: inline-block;
-    width: 20%
+    width: 49%;
+    margin: 0;
+    padding: 0;
+}
+
+@media (min-width: 992px) {
+    ul.columns li {
+        width: 19%;
+    }
 }
 
 /*
@@ -175,24 +214,144 @@ ul.columns li {
     content: " and"; 
 }
 
-/* Display public hikes
+/* Display hikes
  *
 */
 
-.publichike > p {
+.publiclog  {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+}
+
+.publichike {
+    padding: 20px;
+    text-align: left;
+}
+
+.publichike:not(:last-child) {
+    border-bottom: 1px solid #CCC;
+}
+
+.nohikes {
+    text-align: center;
+}
+
+.details {
+    font-style: italic;
+}
+
+.singlehike {
+    text-align: left;
+    background: #E5E5E5;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 8px;
+}
+
+.singlehike > p, .publichike > p, .userhike > p {
     margin-bottom: 0px;
 }
 
-/*
- * Display hikes
-*/
-.hike-head {
-    font-weight: bold;
+.userhikes {
+    border: 1px solid #ccc;
+    border-radius: 8px;
 }
 
-.hike-rating {
-    /* perhaps left-align and offset a bit, along with mileage? */
+.userhike {
+    padding: 10px;
 }
+
+.userhike:not(:last-child) {
+    border-bottom: 1px solid #CCC;
+}
+
+.userhike.private {
+    background: #E5E5E5;
+}
+
+.hikeactions a i {
+    color: #666;
+    margin-right: 15px;
+}
+
+.hikeactions a:hover i {
+    color: #9ACD32;
+}
+
+/* 
+ * Peak page
+*/
+
+.peakinfo {
+    background: #f8f8f8;
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.peakinfo h1 {
+    margin-top: 0;
+}
+/*
+ * Peaks table
+*/
+
+th {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+    background: #E5E5E5;
+    border-bottom: 1px solid #CCC;
+}
+
+td a i {
+    color: #666;
+}
+
+td a:hover i {
+    color: #9ACD32;
+}
+
+th, td {
+    padding: 5px 20px;
+}
+
+th:last-child, td:last-child {
+    padding: 5px 5px 5px 20px;
+}
+
+tr:nth-child(even) {
+    background: #f8f8f8;
+}
+
+.peakdetails {
+    display: inline-block;
+    float: right;
+    margin-left: 15px;
+}
+
+th.header { 
+    cursor: pointer; 
+    background-image: url('/img/sort.gif');
+    background-repeat: no-repeat; 
+    background-position: center left; 
+}
+
+th.headerSortUp { 
+    background-image: url('/img/asc.gif');
+} 
+
+th.headerSortDown { 
+    background-image: url('/img/desc.gif');
+} 
+
+/* 
+ * Progress bar
+*/
+
+.progress-bar {
+    background-color: #9ACD32;
+}
+
+
 
 
 /*
@@ -211,13 +370,13 @@ ul.columns li {
    it doesn’t make the test unnecessarily selective */
 .rating:not(:checked) > input {
     position:absolute;
-    top:-9999px;
+    left:-9999px;
     clip:rect(0,0,0,0);
 }
 
 .rating:not(:checked) > label {
     float:right;
-    width:1em;
+    width:1.2em;
     padding:0 .1em;
     overflow:hidden;
     white-space:nowrap;
@@ -225,7 +384,7 @@ ul.columns li {
     font-size:100%;
     line-height:1.2;
     color:#ddd;
-    text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);
+    /*text-shadow:1px 1px #bbb, 2px 2px #666, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
 .rating:not(:checked) > label:before {
@@ -233,14 +392,14 @@ ul.columns li {
 }
 
 .rating > input:checked ~ label {
-    color: #f70;
-    text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);
+    color: #9ACD32;
+    /*text-shadow:1px 1px #c60, 2px 2px #940, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
 .rating:not(:checked) > label:hover,
 .rating:not(:checked) > label:hover ~ label {
-    color: gold;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    color: #9ACD32;
+    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
 .rating > input:checked + label:hover,
@@ -248,8 +407,8 @@ ul.columns li {
 .rating > input:checked ~ label:hover,
 .rating > input:checked ~ label:hover ~ label,
 .rating > label:hover ~ input:checked ~ label {
-    color: #ea0;
-    text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);
+    color: #9ACD32;
+    /*text-shadow:1px 1px goldenrod, 2px 2px #B57340, .1em .1em .2em rgba(0,0,0,.5);*/
 }
 
 .rating > label:active {

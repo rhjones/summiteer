@@ -41,11 +41,17 @@
                 <div class="collapse navbar-collapse" id="mainmenu">
                     <ul class="nav navbar-nav navbar-right">
                         @if(Auth::check())
+                            <li><a href="/about">About</a></li>
                             <li><a href="/peaks">Peaks</a></li>
-                            <li><a href="/hikes">Your hikes</a></li>
-                            <li><a href="/user/edit/{{ Auth::user()->username }}">Settings</a></li>
-                            <li><a href="/hikes/log">Log a hike</a></li>
-                            <li><a href="/logout">Log out</a></li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><i class="fa fa-user fa-fw"></i> {{ Auth::user()->first_name ?  Auth::user()->first_name : Auth::user()->username }} <span class="caret"></span></a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="/hikes">Your hikes</a></li>
+                                    <li><a href="/hikes/log">Log a hike</a></li>
+                                    <li><a href="/user/edit/{{ Auth::user()->username }}">Settings</a></li>
+                                    <li><a href="/logout">Log out</a></li>
+                                </ul>
+                            </li>
                         @else
                             <li><a href="/about">About</a></li>
                             <li><a href="/peaks">Peaks</a></li>

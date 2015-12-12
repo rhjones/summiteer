@@ -4,36 +4,53 @@
 
 @section('content')
 
-    <p>{{ $welcome }}</p>
-    <p>As of today, you've hiked {{ $count }} of the White Mountain Four Thousand Footers. <a href="/peaks">See details.</a></p>
+    <div class="container">
 
-    @if(sizeof($hikes) == 0)
-        <p>You haven't logged any hikes yet. <a href="/hikes/log">Log one now!</a></p>
-    @else
-        @foreach($hikes as $hike)
-            <? $private = ($hike->public == 0) ? ' private' : '' ?>
-        	<div class="hike{{ $private }}">
-                <span class="hike-rating">
-                    @for($i = 0; $i < $hike->rating; $i++)
-                        <i class="fa fa-star"></i>
-                    @endfor
-                </span>
-                <span class="hike-mileage">
-                    {{ $hike->mileage ? $hike->mileage . ' miles' : '' }}
-                </span>
-                <span class="hike-head">
-                    <ul class="peaklist">
-                        @foreach($hike->peaks as $peak)
-                            <li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
-                        @endforeach 
-                    </ul>
-                </span>
-                <p>{!! nl2br(e($hike->notes)) !!}</p>
-        		<p><a href="/hikes/show/{{ $hike->id }}">{{ $hike->date_hiked }}</a></p>
-                <p><a href="/hikes/edit/{{ $hike->id }}">Edit</a> | <a href="/hikes/confirm-delete/{{ $hike->id }}">Delete</a></p>
-        	</div>
-        @endforeach
-    @endif
+        <h1>{{ $welcome }}</h1>
+        <p>As of today, you've hiked {{ $count }} of the White Mountain Four Thousand Footers. <a href="/peaks">See details.</a></p>
+        <div class="progress">
+            <div class="progress-bar" role="progressbar" aria-valuenow="{{ $count }}" aria-valuemin="0" aria-valuemax="48" style="width: {{ $progress }}%;"></div>
+        </div>
+
+        @if(sizeof($hikes) == 0)
+            <div class="nohikes">
+                <p>You haven't logged any hikes yet.</p>
+                <p><a class="btn btn-primary" href="/hikes/log">Log one now!</a></p>
+            </div>
+        @else
+            <div class="userhikes">
+                @foreach($hikes as $hike)
+                    <? $private = ($hike->public == 0) ? ' private' : '' ?>
+                    <div class="userhike{{ $private }}">
+                        @if($hike->public == 0)
+                            <i class="fa fa-lock"></i>
+                        @endif
+                        <ul class="peaklist">
+                            @foreach($hike->peaks as $peak)
+                                <li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
+                            @endforeach 
+                        </ul>
+                        <p class="notes">
+                            <span class="hike-rating">
+                                @for($i = 0; $i < $hike->rating; $i++)
+                                        <i class="fa fa-star"></i>
+                                @endfor
+                            </span>
+                            {!! nl2br(e($hike->notes)) !!}
+                        </p>
+                        <p class="details">
+                            {{ $hike->mileage ? $hike->mileage . ' miles' : '' }} &middot; {{ $hike->date_hiked }}
+                        </p>
+                        <p class="hikeactions">
+                            <a href="/hikes/edit/{{ $hike->id }}"><i class="fa fa-pencil"></i></a>
+                            <a href="/hikes/confirm-delete/{{ $hike->id }}"><i class="fa fa-trash-o"></i></a>
+                            <a href="/hikes/show/{{ $hike->id }}"><i class="fa fa-ellipsis-h"></i></a>
+                        </p>
+                    </div>
+                @endforeach
+            </div>
+        @endif
+    </div>
     
 @stop
 
