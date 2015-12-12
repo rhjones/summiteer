@@ -136,10 +136,6 @@ class HikeController extends Controller {
             \Session::flash('flash_message','Hike not found.');
             return redirect('/hikes');
         }
-        // else if ($hike->user_id !== \Auth:id()) {
-        //     \Session::flash('flash_message'),'This hike doesn\'t belong to you.');
-        //     return redirect('/hikes');
-        // }
 
         // get peak list
         $peakModel = new \App\Peak();
@@ -231,6 +227,10 @@ class HikeController extends Controller {
 
         if(is_null($hike)) {
             \Session::flash('flash_message','Hike not found.');
+            return redirect('/hikes');
+        }
+        else if ($hike->user_id !== \Auth::id()) {
+            \Session::flash('flash_message','Sorry; this hike doesn\'t belong to you.');
             return redirect('/hikes');
         }
 
