@@ -19,6 +19,9 @@ class UserController extends Controller {
     public function getEdit($username = null) {
 
         $user = \App\User::where('username', $username)->first();
+        \Debugbar::addMessage('user id is: '.$user->id);
+        \Debugbar::addMessage('auth id is: '.Auth::id());
+
         if(is_null($user)) {
             \Session::flash('flash_message','User not found.');
             return redirect('/');
