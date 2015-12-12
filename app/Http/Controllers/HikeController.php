@@ -36,6 +36,9 @@ class HikeController extends Controller {
         foreach ($hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
             $hike->date_hiked = $date_of_hike->diffForHumans();
+            if ($hike->public == 0) {
+                $hike->private = ' private';
+            }
         }
 
         $user = \App\User::with('peaks')->find(\Auth::id());

@@ -20,8 +20,7 @@
         @else
             <div class="userhikes">
                 @foreach($hikes as $hike)
-                    <? $private = ($hike->public == 0) ? ' private' : '' ?>
-                    <div class="userhike{{ $private }}">
+                    <div class="userhike{{ $hike->private }}">
                         @if($hike->public == 0)
                             <i class="fa fa-lock"></i>
                         @endif
