@@ -9,9 +9,6 @@
 
 	@if(!isset($user))
 		<p>Account not found.</p>
-	@elseif($user->id !== Auth::id())
-		<h1 class="error"><i class="fa fa-ban"></i> Uh oh.</h1>
-		<p>You're not authorized to edit this page. Why don't you check out <a href="/hikes">your hikes</a> instead?</p>
 	@else
 
 	    <h1>
