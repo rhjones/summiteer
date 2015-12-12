@@ -47,12 +47,14 @@ class PeakController extends Controller {
 
         $public_hikes = $peak->hikes->where('public',1);
 
-        foreach ($public_hikes as $hike) {
-            $date_of_hike = Carbon::parse($hike->date_hiked);
-            $hike->date_hiked = $date_of_hike->diffForHumans();
-        }
+        dump($public_hikes);
 
-        return view('peaks.peak')->with(['peak' => $peak, 'public_hikes' => $public_hikes]);
+        // foreach ($public_hikes as $hike) {
+        //     $date_of_hike = Carbon::parse($hike->date_hiked);
+        //     $hike->date_hiked = $date_of_hike->diffForHumans();
+        // }
+
+        // return view('peaks.peak')->with(['peak' => $peak, 'public_hikes' => $public_hikes]);
     }
 
 }

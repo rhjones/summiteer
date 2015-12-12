@@ -8,17 +8,15 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 
 
 ## Features
-
+- Log in with either username or email address.
 - Random personalized welcome message each time a user logs in.
 - Custom error messages.
+- Sortable table of peaks in the White Mountains.
 
 
 ## Notes
 
 - Users can log in using either their username or their email address. For DWA15 purposes, usernames for the standard users are "jillharvard" and "jamalharvard."
-
-## TODO
-- Error: register, then try to create a public hike. 
 
 
 ## Outside Resources

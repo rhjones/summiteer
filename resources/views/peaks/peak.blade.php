@@ -34,7 +34,7 @@
 
                         @if(sizeof($public_hikes) == 0)
                             <div class="nohikes">
-                                <p>No public hikes have been logged for {{ $peak->name }}.</p>
+                                <p>No public hikes have been logged for Mount {{ $peak->name }}.</p>
                                 <p>
                                     @if(Auth::check())
                                         <a class="btn btn-primary" href="/hikes/log">
