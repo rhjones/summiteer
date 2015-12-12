@@ -12,28 +12,30 @@
         </ul>
     @endif
 
-    <form method='POST' action='/login'>
+    <div class="formbox">
+        <form method='POST' action='/login'>
 
-        {!! csrf_field() !!}
+            {!! csrf_field() !!}
 
-        <div class='form-group'>
-            <label for='login'>Email or Username*</label>
-            <input type='text' name='login' id='login' value='{{ old('login') }}'>
-        </div>
+            <div class='form-group'>
+                <label for='login'>Email or Username*</label>
+                <input type='text' class='form-control' name='login' id='login' value='{{ old('login') }}'>
+            </div>
 
-        <div class='form-group'>
-            <label for='password'>Password*</label>
-            <input type='password' name='password' id='password' value='{{ old('password') }}'>
-        </div>
+            <div class='form-group'>
+                <label for='password'>Password*</label>
+                <input type='password' class='form-control' name='password' id='password' value='{{ old('password') }}'>
+            </div>
 
-        <div class='form-group'>
-            <input type='checkbox' name='remember' id='remember'>
-            <label for='remember' class='checkboxLabel'>Remember me</label>
-        </div>
+            <div class='form-group'>
+                <input type='checkbox' name='remember' id='remember'>
+                <label for='remember' class='checkboxLabel'>Remember me</label>
+            </div>
 
-        <button type='submit' class='btn btn-primary'>Login</button>
+            <button type='submit' class='btn btn-primary'>Login</button>
 
-    </form>
+        </form>
 
-    <p>No account? <a href='register'>Sign up &raquo;</a></p>
+        <p>No account? <a href='register'>Sign up &raquo;</a></p>
+    </div>
 @stop

@@ -29,8 +29,6 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 	- [nesbot/carbon](https://github.com/briannesbitt/carbon)
 	- [twbs/bootstrap](https://github.com/twbs/bootstrap)
 	- ["Mountains"](https://thenounproject.com/term/mountains/70650/) by Julien Meysmans, from The Noun Project
-	- ["Mountains"](https://thenounproject.com/term/mountains/141766/) by Creative Stall, from The Noun Project
-
 
 
 

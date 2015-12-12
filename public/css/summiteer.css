@@ -15,7 +15,7 @@ html {
     min-height: 100%;
 }
 body {
-    margin: 0 0 100px; /* bottom = footer height */
+    margin: 0 0 50px; /* bottom = footer height */
 }
 footer {
     position: absolute;
@@ -23,36 +23,121 @@ footer {
     bottom: 0;
     height: 50px;
     width: 100%;
-    background: #CCC;
+    background: #F8F8F8;
+}
+
+.flash_message {
+    text-align: center;
+    background-color: #9ACD32;
+    padding: 10px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/*
+ * Welcome page
+*/
+
+#welcome.row {
+    min-height: 100vh;
+    background-image: url('/img/moosilauke.jpg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.enter {
+    text-align: center;
+    padding-bottom: 20px;
+}
+
+.btn-entry {
+    color: #333;
+    border: 4px solid #000;
+    background: #FFF;
+    white-space: nowrap;
+    padding: 20px 40px;
+    font-size: 14px;
+    line-height: 1.428571429;
+    border-radius: 8px;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+.btn-entry:hover {
+    background-color: #e6e6e6;
+}
+
+.publiclog  {
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 8px;
+}
+
+.publichike {
+    padding: 20px;
+}
+
+.publichike:not(:last-child) {
+    border-bottom: 1px solid #CCC;
 }
 
 /*
  * Navigation
 */
 
+.navbar {
+    margin-bottom: 0;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
 .navbar-brand {
     padding: 0;
     height: 74px;
 }
 
-/*.navbar-toggle {
-    border-color: #DDD;
-}
-
-.navbar-toggle:hover {
-    color: #DDD;
-}*/
-
 .navbar-default {
     border: 0;
 }
 
-@media (min-width: 768px) {
+@media (min-width: @screen-sm-min) {
     .navbar-nav > li > a {
         padding-top: 27px;
         padding-bottom: 27px;
     }
 }
+
+/* Forms
+ *
+*/
+
+@media (min-width: 768px) {
+    .formbox {
+        max-width: 400px;
+    }
+}
+
+.formbox {
+    margin: 20px auto;
+    padding: 0 10px 0 10px;
+    text-align: center;
+}
+
+.form-group {
+    text-align: left;
+}
+
+label {
+    font-weight: normal;
+}
+
+button {
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
+}
+
+
 
 
 /*
@@ -71,17 +156,31 @@ ul.columns li {
 .peaklist {
     display: inline;
     padding: 0;
+    
 }
 
 .peaklist li {
     display: inline;
+    font-family: 'Montserrat', sans-serif;
+    text-transform: uppercase;
 }
 .peaklist li:not(:last-child):after { 
+    font-family: 'Playfair Display', serif;
     content: ","; 
 }
 
 .peaklist li:nth-last-child(2):after { 
+    font-family: 'Playfair Display', serif;
+    text-transform: none;
     content: " and"; 
+}
+
+/* Display public hikes
+ *
+*/
+
+.publichike > p {
+    margin-bottom: 0px;
 }
 
 /*
