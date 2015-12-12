@@ -7,16 +7,20 @@ Summitteer is a hiking log for those attempting to join the AMC 4000 Footer Club
 Hikes can be logged publicly (in which case, they'll show up on the page for an individual peak; the 10 most recent public hikes are listed on the home page) or privately (in which case, they're only viewable by the user who logged them).
 
 
-
 ## Features
 
 - Random personalized welcome message each time a user logs in.
 - Custom error messages.
-- 
+
 
 ## Notes
 
 - Users can log in using either their username or their email address. For DWA15 purposes, usernames for the standard users are "jillharvard" and "jamalharvard."
+
+## TODO
+
+- Fix mobile display: check breakpoints
+- 
 
 
 ## Outside Resources
