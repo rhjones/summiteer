@@ -2,6 +2,8 @@
 
 @section('title', 'Home')
 
+@section('pagetitle', 'Home')
+
 @section('content')
 	@if(sizeof($public_hikes) == 0)
         No public hikes have been logged yet. <a href="/hikes/log">Log one now!</a>

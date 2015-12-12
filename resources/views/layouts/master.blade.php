@@ -40,7 +40,7 @@
 </nav>
 
     <header>
-        <h1>@yield('title','Summiteer')</h1>
+        <h1>@yield('pagetitle')</h1>
     </header>
 
     <section>
