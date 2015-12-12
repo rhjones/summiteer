@@ -83,10 +83,10 @@ class UserController extends Controller {
     }
 
     /**
-    * Responds to requests to GET /user/confirm-delete/{username}
+    * Responds to requests to GET /user/confirm-delete
     */
-    public function getConfirmDelete($username = null) {
-        $user = \App\User::where('username', $username)->first();
+    public function getConfirmDelete() {
+        $user = Auth::user();
 
         if(is_null($user)) {
             \Session::flash('flash_message','User not found.');
@@ -97,15 +97,19 @@ class UserController extends Controller {
     }
 
     /**
-    * Responds to requests to GET /user/delete/{username}
+    * Responds to requests to GET /user/delete
     */
-    public function getDoDelete($username = null) {
-        # Get the user to be deleted
-        $user = \App\User::where('username', $username)->first();
+    public function getDoDelete() {
+        $user = Auth::user();
 
         if(is_null($user)) {
             \Session::flash('flash_message','User not found.');
             return redirect('/');
+        }
+
+        // Remove peaks associated with user
+        if ($user->peaks()) {
+            $user->peaks()->detach();
         }
 
         # First remove any hikes associated with this user
@@ -114,8 +118,8 @@ class UserController extends Controller {
                 if($hike->peaks()) {
                     $hike->peaks()->detach();
                 }
+                $hike->delete();
             }
-            \App\Hike::where('user_id',$user->id)->delete();
         }
 
         # Then delete the user

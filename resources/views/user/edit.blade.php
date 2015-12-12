@@ -13,7 +13,7 @@
 		<div class="centerbox">
 
 			<h1>Account settings 
-				<small><a href="/user/confirm-delete/{{ $user->username }}"><i class="fa fa-trash-o"></i> delete account</a></small>
+				<small><a href="/user/confirm-delete"><i class="fa fa-trash-o"></i> delete account</a></small>
 			</h1>
 			@if(count($errors) > 0)
 		        <ul class='errors'>
