@@ -27,6 +27,35 @@ footer {
 }
 
 /*
+ * Navigation
+*/
+
+.navbar-brand {
+    padding: 0;
+    height: 74px;
+}
+
+/*.navbar-toggle {
+    border-color: #DDD;
+}
+
+.navbar-toggle:hover {
+    color: #DDD;
+}*/
+
+.navbar-default {
+    border: 0;
+}
+
+@media (min-width: 768px) {
+    .navbar-nav > li > a {
+        padding-top: 27px;
+        padding-bottom: 27px;
+    }
+}
+
+
+/*
  * Display peak list in hike log forms as multiple columns
 */
 

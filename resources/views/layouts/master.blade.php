@@ -17,33 +17,51 @@
 </head>
 <body>
 
-    @if(Session::get('flash_message') != null)
-        <div class="flash_message">{{ Session::get('flash_message') }}</div>
-    @endif
 
-    <nav>
-    <ul>
-        @if(Auth::check())
-            <li><a href="/">Home</a></li>
-            <li><a href="/peaks">Peaks</a></li>
-            <li><a href="/hikes">Your hikes</a></li>
-            <li><a href="/user/edit/{{ Auth::user()->username }}">Settings</a></li>
-            <li><a href="/hikes/log">Log a hike</a></li>
-            <li><a href="/logout">Log out</a></li>
-        @else
-            <li><a href="/">Home</a></li>
-            <li><a href="/peaks">Peaks</a></li>
-            <li><a href="/login">Log in</a></li>
-            <li><a href="/register">Register</a></li>
-        @endif
-    </ul>
-</nav>
+<header>
 
-    <header>
-        <h1>@yield('pagetitle')</h1>
-    </header>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#mainmenu" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">
+                    <img alt="Summiteer" src="/img/summiteer.png" width="443" height="74" class="hidden-xs">
+                    <img alt="Summiteer" src="/img/summiteer_logo.png" width="133" height="74" class="visible-xs-block">
+                </a>
+            </div>
+            <div class="collapse navbar-collapse" id="mainmenu">
+                <ul class="nav navbar-nav navbar-right">
+                    @if(Auth::check())
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/peaks">Peaks</a></li>
+                        <li><a href="/hikes">Your hikes</a></li>
+                        <li><a href="/user/edit/{{ Auth::user()->username }}">Settings</a></li>
+                        <li><a href="/hikes/log">Log a hike</a></li>
+                        <li><a href="/logout">Log out</a></li>
+                    @else
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/peaks">Peaks</a></li>
+                        <li><a href="/login">Log in</a></li>
+                        <li><a href="/register">Register</a></li>
+                    @endif
+                </ul>
+            </div>
+        </div>
+    </nav>
+</header>
+
+    <h1>@yield('pagetitle')</h1>
 
     <section>
+        @if(Session::get('flash_message') != null)
+            <div class="flash_message">{{ Session::get('flash_message') }}</div>
+        @endif
+
         {{-- Main page content will be yielded here --}}
         @yield('content')
     </section>
