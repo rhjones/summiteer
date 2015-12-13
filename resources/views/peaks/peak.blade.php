@@ -49,7 +49,7 @@
                                 <div class="publichike">
                                     <ul class="peaklist">
                                         @foreach($public_hike->peaks as $peak)
-                                            <li><a href="peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
+                                            <li><a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a></li>
                                         @endforeach 
                                     </ul>
                                     <p class="notes">
