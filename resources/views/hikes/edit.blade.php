@@ -26,7 +26,12 @@
 	        	<ul class="columns">
 			        @foreach($peak_list as $peak_id => $peak_name )
 		                <? $checked = (in_array($peak_id,$peaks_for_this_hike)) ? 'CHECKED' : '' ?> 
-		                <li><input {{ $checked }} type="checkbox" name="peaks[]" id="{{ $peak_id }}" value='{{ $peak_id }}'>
+		                <li>
+		                	<input 
+		                	@if(in_array($peak_id,$peaks_for_this_hike))
+		                		checked
+		                	@endif
+		                	type="checkbox" name="peaks[]" id="{{ $peak_id }}" value='{{ $peak_id }}'>
 		                <label for="{{ $peak_id }}">{{ $peak_name }}</label></li>
 			        @endforeach
 			    </ul>
