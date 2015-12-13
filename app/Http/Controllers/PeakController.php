@@ -45,9 +45,7 @@ class PeakController extends Controller {
             return redirect('/peaks');
         }
 
-
-        $public_hikes = $peak->hikes->where('public',1);
-
+        $public_hikes = $peak->hikes()->where('public',1)->get();
 
         foreach ($public_hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
