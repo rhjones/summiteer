@@ -25,7 +25,6 @@
 				<legend>Peak(s) Hiked*</legend>
 	        	<ul class="columns">
 			        @foreach($peak_list as $peak_id => $peak_name )
-		                <? $checked = (in_array($peak_id,$peaks_for_this_hike)) ? 'CHECKED' : '' ?> 
 		                <li>
 		                	<input 
 		                	@if(in_array($peak_id,$peaks_for_this_hike))
