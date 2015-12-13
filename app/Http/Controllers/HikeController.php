@@ -230,7 +230,7 @@ class HikeController extends Controller {
             \Session::flash('flash_message','Hike not found.');
             return redirect('/hikes');
         }
-        else if ($hike->user_id !== \Auth::id()) {
+        else if ($hike->user_id != \Auth::id()) {
             \Session::flash('flash_message','Sorry; this hike doesn\'t belong to you.');
             return redirect('/hikes');
         }
