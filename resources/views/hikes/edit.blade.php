@@ -49,10 +49,13 @@
 
 	        <fieldset class="rating">
 			    <legend>Rating</legend>
-			    @for ($i = 5; $i > 0; $i--)
-			    	<? $checked = ($hike->rating == $i ? 'checked' : '') ?>
-			    	<input type="radio" id="star{{ $i }}" name="rating" value="{{ $i }}" {{ $checked }}><label for="star{{ $i }}">{{ $i }} stars</label>
-			    @endfor
+				    @for ($i = 5; $i > 0; $i--)
+				    	<input type="radio"
+				    	@if($hike->rating == $i)
+		    				checked
+		    			@endif
+				    	id="star{{ $i }}" name="rating" value="{{ $i }}"><label for="star{{ $i }}">{{ $i }} stars</label>
+				    @endfor
 			</fieldset>
 
 			<div class="form-group">
