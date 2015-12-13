@@ -20,19 +20,8 @@
 
 	    	{!! csrf_field() !!}
 		
-			<fieldset name="peaks">
-				<legend>Peak(s) Hiked*</legend>
-	        	<ul class="columns">
-			        @foreach($peak_list as $peak_id => $peak_name)
-			        	<li><input type="checkbox" name="peaks[]" id="{{ $peak_id }}" value="{{ $peak_id }}"> 
-			            <label for="{{ $peak_id }}">{{ $peak_name }}</label></li>
-			        @endforeach
-			    </ul>
-			</fieldset>
-
-
 			<div class="form-group">
-				<label for="date_hikes">Date Hiked*</label>
+				<label for="date_hikes">Date of Hike*</label>
 				<input type="date" class='form-control' name="date_hiked" id="date_hiked">
 			</div>
 	    	
@@ -41,6 +30,16 @@
 	            <label for="mileage">Mileage</label>
 	            <input type="number" class='form-control' name="mileage" id="mileage" step="any" value="{{ old('mileage') }}">
 	        </div>
+
+	        <fieldset name="peaks">
+				<legend>Peak(s) Hiked*</legend>
+	        	<ul class="columns">
+			        @foreach($peak_list as $peak_id => $peak_name)
+			        	<li><input type="checkbox" name="peaks[]" id="{{ $peak_id }}" value="{{ $peak_id }}"> 
+			            <label for="{{ $peak_id }}">{{ $peak_name }}</label></li>
+			        @endforeach
+			    </ul>
+			</fieldset>
 
 	        <fieldset class="rating">
 			    <legend>Rating</legend>

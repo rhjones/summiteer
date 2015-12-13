@@ -6,17 +6,16 @@ Summitteer is a hiking log for those attempting to join the AMC 4000 Footer Club
 
 Hikes can be logged publicly (in which case, they'll show up on the page for an individual peak; the 10 most recent public hikes are listed on the home page) or privately (in which case, they're only viewable by the user who logged them).
 
-## TODO
-- Fix mileage display
-- Figure out public hike display: string vs. integer and how to query database
-
 
 ## Features
 - Log in with either username or email address.
 - Random personalized welcome message each time a user logs in.
 - Custom error messages.
-- Sortable table of peaks in the White Mountains.
-
+- Sortable table of peaks in the White Mountains, with links to peak descriptions and summit forecasts.
+- Hikes can be logged publicly or privately.
+- Display of 10 most recent public hikes on home page.
+- All publicly logged hikes are displayed on an individual peak's page.
+- User progress displayed as number (5 peaks) and progress bar.
 
 ## Notes
 
@@ -28,11 +27,14 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 - Packages & Plugins
 	- [goodby/csv](https://github.com/goodby/csv)
 	- [christianbach/tablesorter](https://github.com/christianbach/tablesorter)
+	- [nesbot/carbon](https://github.com/briannesbitt/carbon)
 - Other
 	- [Accessible star rating widget with pure CSS](http://lea.verou.me/2011/08/accessible-star-rating-widget-with-pure-css/) by Lea Verou
-	- [nesbot/carbon](https://github.com/briannesbitt/carbon)
 	- [twbs/bootstrap](https://github.com/twbs/bootstrap)
 	- ["Mountains"](https://thenounproject.com/term/mountains/70650/) by Julien Meysmans, from The Noun Project
+
+## Future Plans
+- 
 
 
 
