@@ -25,9 +25,6 @@ Route::get('/login', 'Auth\AuthController@getLogin');
 // Process login form
 Route::post('/login', 'Auth\AuthController@postLogin');
 
-// Process logout
-Route::get('/logout', 'Auth\AuthController@getLogout');
-
 // Show registration form
 Route::get('/register', 'Auth\AuthController@getRegister');
 
@@ -63,6 +60,7 @@ Route::group(['middleware' => 'auth'], function() {
     Route::get('/user/delete/{username?}', 'UserController@getDoDelete'); 
     Route::get('/user/edit', 'UserController@getEdit');
     Route::post('/user/edit', 'UserController@postEdit'); 
+    Route::get('/logout', 'Auth\AuthController@getLogout');
 });
 
 
