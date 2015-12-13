@@ -46,7 +46,7 @@ class PeakController extends Controller {
         }
 
 
-        $public_hikes = $peak->hikes->where('public','1');
+        $public_hikes = $peak->hikes->where('public',1);
 
 
         foreach ($public_hikes as $hike) {

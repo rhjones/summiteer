@@ -96,9 +96,10 @@ class HikeController extends Controller {
             'date_hiked' => 'required|date|before:tomorrow'
         ]);
 
+
         $hike = new \App\Hike();
         $hike->date_hiked = $request->date_hiked;
-        $hike->public = ($request->public == 'on' ? true : false);
+        $hike->public = ($request->public == 'on' ? 1 : 0);
         $hike->user_id = \Auth::id();
 
         // optional fields

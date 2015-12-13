@@ -38,7 +38,7 @@
                             {!! nl2br(e($hike->notes)) !!}
                         </p>
                         <p class="details">
-                            {{ $hike->mileage ? $hike->mileage . ' miles' : '' }} &middot; {{ $hike->date_hiked }}
+                            {{ $hike->mileage > 0 ? $hike->mileage . ' miles &middot;' : '' }}  {{ $hike->date_hiked }}
                         </p>
                         <p class="hikeactions">
                             <a href="/hikes/edit/{{ $hike->id }}"><i class="fa fa-pencil"></i></a>

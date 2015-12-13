@@ -42,7 +42,7 @@ $factory->define(App\Hike::class, function (Faker\Generator $faker) {
         'mileage' => $faker->randomFloat($nbMaxDecimals = 2, $min = 1.0, $max = 15.0),
         'rating' => $faker->numberBetween($min = 1, $max = 5),
         'notes' => $hike_note,
-        'public' => $faker->boolean($chanceOfGettingTrue = 50),
+        'public' => $faker->numberBetween($min = 0, $max = 1),
         'user_id' => $faker->numberBetween($min = 1, $max = 5),
     ];
 });

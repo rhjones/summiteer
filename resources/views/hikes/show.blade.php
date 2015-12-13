@@ -30,7 +30,7 @@
 	            </p>
 	            <p class="details">
 	                {{ $hike->user->first_name ? $hike->user->first_name : $hike->user->username }} &middot;
-	                {{ $hike->mileage ? $hike->mileage . ' miles' : '' }} &middot; 
+	                {{ ($hike->mileage > 0) ? $hike->mileage . ' miles &middot;' : '' }} 
 	                {{ $hike->date_hiked }}
 	            </p>	
 
