@@ -15,6 +15,14 @@
 	@else
 		<h1>Edit your hike <small><a href="/hikes/confirm-delete/{{ $hike->id }}"><i class="fa fa-trash-o"></i> delete</a></small></h1>
 
+		@if(count($errors) > 0)
+	        <ul class='errors'>
+	            @foreach ($errors->all() as $error)
+	                <li><span class='fa fa-exclamation-circle'></span> {{ $error }}</li>
+	            @endforeach
+	        </ul>
+	    @endif
+
 	    <form method="POST" action="/hikes/edit">
 
 	    	{!! csrf_field() !!}
