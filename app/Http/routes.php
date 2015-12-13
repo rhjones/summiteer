@@ -67,7 +67,6 @@ Route::group(['middleware' => 'auth'], function() {
 /*----------------------------------------------------
 / dev
 -----------------------------------------------------*/
-Route::controller('/practice','PracticeController');
 
 if(App::environment('local')) {
     
