@@ -9,7 +9,7 @@
 
 	@if(!isset($hike))
 		<p>Hike not found.</p>
-	@elseif($hike->user_id !== Auth::id())
+	@elseif($hike->user_id != Auth::id())
 		<h1 class="error"><i class="fa fa-ban"></i> Uh oh.</h1>
 		<p>This hike doesn't belong to you. Why don't you check out <a href="/hikes">your hikes</a> instead?</p>
 	@else
