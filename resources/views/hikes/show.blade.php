@@ -9,7 +9,7 @@
 	@if(!isset($hike))
         <p>We can't seem to find the hike you're looking for.</p>
     @else
-    	@if((!$hike->public) && (Auth::id() !== $hike->user->id))
+    	@if((!$hike->public) && (Auth::id() != $hike->user->id))
 	    	<h1 class="error"><i class="fa fa-ban"></i> Uh oh.</h1>
 			<p>Whoops! This hike was logged privately. Try choosing a <a href="/peaks">peak</a> to find some public hikes.</p>
 	    @else
