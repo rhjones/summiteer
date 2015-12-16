@@ -22,7 +22,7 @@
 		
 			<div class="form-group">
 				<label for="date_hikes">Date of Hike*</label>
-				<input type="date" class='form-control' name="date_hiked" id="date_hiked">
+				<input type="date" class='form-control' name="date_hiked" id="date_hiked" max="9999-12-31">
 			</div>
 	    	
 
