@@ -11,7 +11,7 @@
             <div class="col-md-4">
 
                 <div class="enter">
-                    <a class="btn btn-entry" href="{{ Auth::check() ? '/log' : '/login' }}" role="button">Start tracking</a>
+                    <a class="btn btn-entry" href="{{ Auth::check() ? '/hikes/log' : '/login' }}" role="button">Start tracking</a>
                 </div>
             </div>
 
