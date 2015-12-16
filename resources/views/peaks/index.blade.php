@@ -31,8 +31,8 @@
 		            <tr>
 		                <td>
 		                	<span class="peakdetails">
-			                	<a href="{{ $peak->description_link }}"><i class="fa fa-info-circle"></i></a>
-			                	<a href="{{ $peak->forecast_link }}" title="Get forecast"><i class="fa fa-cloud"></i></a>
+			                	<a href="{{ $peak->description_link }}" title="More info" target="_blank"><i class="fa fa-info-circle"></i></a>
+			                	<a href="{{ $peak->forecast_link }}" title="Get forecast" target="_blank"><i class="fa fa-cloud"></i></a>
 		                	</span>
 		                	<a href="/peaks/{{ $peak->id }}">{{ $peak->name }}</a> 
 		                </td>

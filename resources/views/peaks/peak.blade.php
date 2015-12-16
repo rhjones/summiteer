@@ -18,8 +18,8 @@
                     <div class="peakinfo">
                         <h1>Mount {{ $peak->name }}</h1>
                         <p>
-                            <a href="{{ $peak->description_link }}"><i class="fa fa-info-circle"></i> More info</a><br /> 
-                            <a href="{{ $peak->forecast_link }}"><i class="fa fa-cloud"></i> Summit forecast</a>
+                            <a href="{{ $peak->description_link }}" target="_blank"><i class="fa fa-info-circle"></i> More info</a><br /> 
+                            <a href="{{ $peak->forecast_link }}" target="_blank"><i class="fa fa-cloud"></i> Summit forecast</a>
                         </p>
                         <p><em>Elevation</em><br />{{ $peak->elevation }} feet</p>
                         <p><em>Prominence</em><br />{{ $peak->prominence }} feet</p>
