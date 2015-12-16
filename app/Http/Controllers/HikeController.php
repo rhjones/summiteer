@@ -19,7 +19,7 @@ class HikeController extends Controller {
     */
     public function getIndex() {
         $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
-        
+
         $welcome_messages = [
             'Hi there, ',
             'Ahoy, ',
@@ -124,10 +124,7 @@ class HikeController extends Controller {
             $peaks = [];
         }
 
-        $user = \App\User::find(\Auth::id());
-
         $hike->peaks()->sync($peaks);
-        $user->peaks()->sync($peaks,false);
 
         \Session::flash('flash_message','Your hike was logged!');
         
@@ -199,9 +196,6 @@ class HikeController extends Controller {
         }
 
         $hike->peaks()->sync($peaks);
-
-        $user = \App\User::find(\Auth::id());
-        $user->peaks()->sync($peaks,false);
 
         \Session::flash('flash_message','Your hike was updated.');
         
