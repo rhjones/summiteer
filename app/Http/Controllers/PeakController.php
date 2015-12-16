@@ -19,10 +19,17 @@ class PeakController extends Controller {
         $peaks = \App\Peak::orderBy('elevation','DESC')->get();
         $peaks_summitted = [];
         if(\Auth::check()) {
-            $user = \App\User::with('peaks')->find(\Auth::id());
-            $user_peaks = $user->peaks;
+            $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
+            $user_peaks = [];
+            foreach ($hikes as $hike) {    
+                foreach ($hike->peaks as $peak) {
+                    array_push($user_peaks,$peak->id);
+                }
+            }
+            $user_peaks = array_unique($user_peaks);
+
             foreach($user_peaks as $peak) {
-                array_push($peaks_summitted,$peak->id);
+                array_push($peaks_summitted,$peak);
             }
         }
         foreach($peaks as $peak) {
