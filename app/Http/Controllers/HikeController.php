@@ -19,8 +19,7 @@ class HikeController extends Controller {
     */
     public function getIndex() {
         $hikes = \App\Hike::where('user_id',\Auth::id())->with('peaks')->orderBy('date_hiked','DESC')->get();
-        $user = \App\User::with('peaks')->find(\Auth::id());
-
+        
         $welcome_messages = [
             'Hi there, ',
             'Ahoy, ',
@@ -29,10 +28,13 @@ class HikeController extends Controller {
             'Howdy, ',
         ];
 
+        $user = \App\User::find(\Auth::id());
         $name = $user->first_name ? $user->first_name : $user->username;
 
         $random = rand(0, (count($welcome_messages) - 1));
         $welcome = $welcome_messages[$random] . $name. '.';
+
+        $user_peaks = [];
 
         foreach ($hikes as $hike) {
             $date_of_hike = Carbon::parse($hike->date_hiked);
@@ -40,9 +42,14 @@ class HikeController extends Controller {
             if ($hike->public == 0) {
                 $hike->private = ' private';
             }
+            // get the peaks    
+            foreach ($hike->peaks as $peak) {
+                array_push($user_peaks,$peak->id);
+            }
         }
-        
-        $user_peaks = $user->peaks;
+
+        $user_peaks = array_unique($user_peaks);
+
         $count = count($user_peaks);
         $progress = ($count / 48) * 100;
 
@@ -192,6 +199,9 @@ class HikeController extends Controller {
         }
 
         $hike->peaks()->sync($peaks);
+
+        $user = \App\User::find(\Auth::id());
+        $user->peaks()->sync($peaks,false);
 
         \Session::flash('flash_message','Your hike was updated.');
         

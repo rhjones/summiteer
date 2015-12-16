@@ -26,6 +26,7 @@ class CreatePeakUserTable extends Migration
             # Make foreign keys
             $table->foreign('peak_id')->references('id')->on('peaks');
             $table->foreign('user_id')->references('id')->on('users');
+            
         });
     }
 
