@@ -34,6 +34,7 @@ Hikes can be logged publicly (in which case, they'll show up on the page for an 
 	- ["Mountains"](https://thenounproject.com/term/mountains/70650/) by Julien Meysmans, from The Noun Project
 
 ## Future Plans
+- New peak and trail lists
 - Profile pages
 	- Ability to set entire profile as public/private
 - Add profile photos
