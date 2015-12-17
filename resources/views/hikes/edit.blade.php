@@ -72,7 +72,7 @@
 			</div>
 
 			<div class="form-group">
-	            <input type="checkbox" name="public" id="public" {{ $hike->public ? '1' : '0' }} >
+	            <input type="checkbox" name="public" id="public" {{ $hike->public == 1 ? 'checked' : '' }} >
 	            <label for="public">Public</label>
 	        </div>
 
