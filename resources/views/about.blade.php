@@ -27,7 +27,7 @@
 		<h1>Behind the Scenes</h1>
 		<p>Summiteer was built by <a href="https://github.com/rebekahheacock">Rebekah Heacock Jones</a> for the Harvard Extension School's <a href="http://dwa15.com">CSCI E-15 Dynamic Web Applications</a> class in the Fall of 2015.</p>
 
-		<p>Summiteer is written in PHP using the <a href="http://laravel.com/">Laravel</a> framework. All of the Summiteer code is available on <a href="https://github.com/rebekahheacock/dwa15-p4">GitHub</a>.</p>
+		<p>Summiteer is written in PHP using the <a href="http://laravel.com/">Laravel</a> framework. All of the Summiteer code is available on <a href="https://github.com/rebekahheacock/summiteer">GitHub</a>.</p>
 
 		<p>Photo on the home page taken on <a href="/peaks/10">Mount Moosilauke</a> by Rebekah Heacock Jones.</p>
 		
